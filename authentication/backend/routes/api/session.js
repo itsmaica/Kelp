@@ -4,11 +4,26 @@ const asyncHandler = require('express-async-handler');
 const { setTokenCookie, restoreUser } = require('../../utils/auth');
 const { User } = require('../../db/models');
 
+const { check } = require('express-validator');
+const { handleValidationErrors } = require('../../utils/validation');
+
 const router = express.Router();
+
+const validateLogin = [
+  check('credential')
+    .exists({ checkFalsy: true })
+    .notEmpty()
+    .withMessage('Please provide a valid email or username.'),
+  check('password')
+    .exists({ checkFalsy: true })
+    .withMessage('Please provide a password.'),
+  handleValidationErrors
+];
 
 //log in
 router.post(
     '/',
+    validateLogin,
     asyncHandler(async (req, res, next) => {
       const { credential, password } = req.body;
 
@@ -54,6 +69,8 @@ router.get(
   }
 );
 
+
+
 module.exports = router;
 
 //testing-logging in with username - PASSED
@@ -97,3 +114,25 @@ module.exports = router;
 //       "XSRF-TOKEN": `3yAmL0FY-nURZgNxtxZoqH1u51xaqvoSwQDg`
 //     }
 //   }).then(res => res.json()).then(data => console.log(data));
+
+//testing credential user frield - gives back bad request - passed
+
+// fetch('/api/session', {
+//   method: 'POST',
+//   headers: {
+//     "Content-Type": "application/json",
+//     "XSRF-TOKEN": `nLtH4CO9-Ndvkq5yf63rzliVqyRU4HkuglCs`
+//   },
+//   body: JSON.stringify({ credential: '', password: 'password' })
+// }).then(res => res.json()).then(data => console.log(data));
+
+//
+
+// fetch('/api/session', {
+//   method: 'POST',
+//   headers: {
+//     "Content-Type": "application/json",
+//     "XSRF-TOKEN": `J9xyNGtt-WBsUhQEUA0PvfQxlDmiITz-hRiA`
+//   },
+//   body: JSON.stringify({ credential: 'Demo-lition', password: '' })
+// }).then(res => res.json()).then(data => console.log(data));
