@@ -30,6 +30,15 @@ router.post(
     })
   );
 
+// Log out
+router.delete(
+    '/',
+    (_req, res) => {
+      res.clearCookie('token');
+      return res.json({ message: 'success' });
+    }
+  );
+
 module.exports = router;
 
 //testing-logging in with username - PASSED
@@ -62,4 +71,14 @@ module.exports = router;
 //       "XSRF-TOKEN": `Yfp4cshp-l-D3WmgZKvXoDu945Szo28r_MtI`
 //     },
 //     body: JSON.stringify({ credential: 'Demo-lition', password: 'Hello World!' })
+//   }).then(res => res.json()).then(data => console.log(data));
+
+
+//testing log out - passed
+// fetch('/api/session', {
+//     method: 'DELETE',
+//     headers: {
+//       "Content-Type": "application/json",
+//       "XSRF-TOKEN": `3yAmL0FY-nURZgNxtxZoqH1u51xaqvoSwQDg`
+//     }
 //   }).then(res => res.json()).then(data => console.log(data));
