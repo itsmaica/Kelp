@@ -49,6 +49,7 @@ const restoreUser = (req, res, next) => {
 
       return next();
     });
+
 };
 
   // If there is no current user, return an error
