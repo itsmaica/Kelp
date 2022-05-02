@@ -15,7 +15,7 @@ router.use('/session', sessionRouter);
 
 router.use('/users', usersRouter);
 
-router.use('/beaches', beachesRouter);
+// router.use('/beaches', beachesRouter);
 
 
 module.exports = router;
