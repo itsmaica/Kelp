@@ -12,6 +12,19 @@ const { Beach } = require('../../db/models');
 
 const router = express.Router();
 
+//get beaches
+router.get('/', asyncHandler(async function(_req,res){
+    //might need to add more here
+    const beaches = await Beach();
+    return res.json(beaches);
+}))
+
+//update a beach listing
+router.put(
+    '/:id',
+    
+)
+
 //create a beach
 // router.post(
 //     "/beaches",
