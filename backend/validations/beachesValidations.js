@@ -23,3 +23,23 @@ const state = check('state')
 const zipcode = check('zipcode')
     .notEmpty()
     .withMessage('zipcode cannot be empty')
+
+exports.validateCreate = [
+    id,
+    category,
+    description,
+    address,
+    city,
+    state,
+    zipcode
+]
+
+exports.validateUpdate = [
+    id,
+    category,
+    description,
+    address,
+    city,
+    state,
+    zipcode
+]
