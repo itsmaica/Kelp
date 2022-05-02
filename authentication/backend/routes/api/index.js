@@ -12,9 +12,10 @@ router.use('/session', sessionRouter);
 
 router.use('/users', usersRouter);
 
-router.post('/test', (req, res) => {
-  res.json({ requestBody: req.body });
-});
+// test completed  for front end
+// router.post('/test', (req, res) => {
+//   res.json({ requestBody: req.body });
+// });
 
 //passed - setTokenCookie
 // router.get('/set-token-cookie', asyncHandler(async (_req, res) => {
