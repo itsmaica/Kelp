@@ -47,32 +47,3 @@ router.post(
 
 module.exports = router;
 
-//testing sign-up
-// fetch('/api/users', {
-//     method: 'POST',
-//     headers: {
-//       "Content-Type": "application/json",
-//       "XSRF-TOKEN": `P3WzpvQ8-PZJD7dgEeUSSMMIHjht0KSnyZzk`
-//     },
-//     body: JSON.stringify({
-//       email: 'spidey@spider.man',
-//       username: 'Spidey',
-//       password: 'password'
-//     })
-//   }).then(res => res.json()).then(data => console.log(data));
-
-
-//signup error for username already existing works. do not see email tho?
-
-// fetch('/api/users', {
-//     method: 'POST',
-//     headers: {
-//       "Content-Type": "application/json",
-//       "XSRF-TOKEN": `3xGwn3pw-QKy16BhB6ES-vxIZGQEWtvf4gdI`
-//     },
-//     body: JSON.stringify({
-//       email: 'cheese@no.com',
-//       username: 'mamaia',
-//       password: 'lolha'
-//     })
-//   }).then(res => res.json()).then(data => console.log(data));
