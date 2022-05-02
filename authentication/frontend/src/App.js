@@ -8,7 +8,7 @@
 //   return (
 //     <>
 //     <h1>Hello from Kelp</h1>
-//       <h2>Find your perfect Beach</h2>
+//       <h2>Find your perfect beach destination</h2>
 //     <Switch>
 //       <Route path="/login">
 //         <LoginFormPage />
@@ -24,7 +24,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
-// import LoginFormPage from './components/LoginFormPage'
 import LoginFormPage from './components/LoginFromPage'
 import * as sessionActions from "./store/session";
 
