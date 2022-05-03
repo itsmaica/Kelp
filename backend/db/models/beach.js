@@ -2,7 +2,7 @@
 module.exports = (sequelize, DataTypes) => {
   const Beach = sequelize.define('Beach', {
     name: DataTypes.STRING,
-    ownerId: DataTypes.INTEGER,
+    userId: DataTypes.INTEGER,
     category: DataTypes.STRING,
     description: DataTypes.TEXT,
     address: DataTypes.STRING,
@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Beach.associate = function(models) {
     // associations can be defined here
-    Beach.belongsTo(models.User, { foreignKey: 'ownerId' });
+    Beach.belongsTo(models.User, { foreignKey: 'userId' });
     Beach.hasMany(models.Review, { foreignKey: 'beachId' });
 
   };

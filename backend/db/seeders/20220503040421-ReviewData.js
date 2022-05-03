@@ -83,13 +83,6 @@ module.exports = {
         answer: 'A bit of a hidden gem. Great beach, fun to cross the bridge and drive about 7 miles along the island to the beach. Very pretty views!'
       },
       {
-        name: 'Freshwater Beach!',
-        userId: 6,
-        beachId: 5,
-        rating: 4,
-        answer: 'A bit of a hidden gem. Great beach, fun to cross the bridge and drive about 7 miles along the island to the beach. Very pretty views!'
-      },
-      {
         name: 'Great view on a road trip',
         userId: 7,
         beachId: 1,

@@ -17,16 +17,15 @@ module.exports = {
       userId: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references: { model: { tableName: "Users" } }
+        references: { model: "Users"}
       },
       beachId: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        unique: true,
-        references: { model: { tableName: "Beaches" } }
+        references: { model: "Beaches"}
       },
       rating: {
-        type: Sequelize.INTEGER(5),
+        type: Sequelize.INTEGER,
         allowNull: false,
       },
       answer: {

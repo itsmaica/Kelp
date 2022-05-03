@@ -15,16 +15,14 @@ module.exports = {
         allowNull: false,
         unique: true
       },
-      ownerId: {
+      userId: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        unique: true,
-        references: { model: {tableName: "Users"}}
+        references: { model: "Users"}
       },
       category: {
         type: Sequelize.STRING(50),
         allowNull: false,
-        unique: true
       },
       description: {
         type: Sequelize.TEXT,
