@@ -1,3 +1,4 @@
+import { csrfFetch } from "./csrf";
 //create a beach
 const CREATE_BEACH = 'beach/CREATE_BEACH'
 
@@ -7,7 +8,8 @@ const createBeach = beach =>({
 })
 
 export const createOneBeach = (payload) => async dispatch => {
-    const response = await fetch(`/api/beach`, {
+    console.log("hello")
+    const response = await csrfFetch(`/api/beaches`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
@@ -22,7 +24,7 @@ export const createOneBeach = (payload) => async dispatch => {
     }
 }
 
-const initialState = {  }
+const initialState = {}
 
 const beachReducer = ( state = initialState, action ) => {
     switch(action.type) {
@@ -32,7 +34,10 @@ const beachReducer = ( state = initialState, action ) => {
                 ...state,
                 [action.beach.id]: action.beach
             }
+        default:
+            return state;
     }
+
 }
 
 export default beachReducer;

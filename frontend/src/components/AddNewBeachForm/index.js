@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 // import { Redirect } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 // import * as sessionctions from "../../store/session"
-// import { createBeach } from '../../store/beaches'
+// import { createOneBeach } from '../../store/beaches'
+import { createOneBeach } from "../../store/beaches";
 import "./AddNewBeachForm.css"
 
 const Categories = [
@@ -13,8 +14,10 @@ const Categories = [
 //Array of us states??
 // const states = [CA, SD]
 
-const AddNewBeachForm = () => {
+const AddNewBeachForm = ({ hideForm }) => {
     const history = useHistory();
+
+    const beach = useSelector(state => state.beach)
 
     const dispatch = useDispatch();
     //might need session user??
@@ -38,6 +41,10 @@ const AddNewBeachForm = () => {
     const updateZipcode = (e) => setZipcode(e.target.value)
 
 
+    useEffect(() => {
+        // dispatch
+    }, [dispatch])
+
     const handleSubmit = e => {
         e.preventDefault()
 
@@ -50,13 +57,18 @@ const AddNewBeachForm = () => {
             state,
             zipcode
         }
-
+        return dispatch(createOneBeach())
         console.log(payload)
 
         history.push("/beaches")
     }
 
     // const createdBeach = await dispatch(createOneBeach(payload))
+
+    // if (createdBeach) {
+    //     history.push(`/beach/${createdBeach.id}`);
+    //     hideForm();
+    // }
 
 
     return (
