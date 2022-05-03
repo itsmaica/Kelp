@@ -1,7 +1,9 @@
+//await previously return
+
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Beaches', {
+    await queryInterface.createTable('Beaches', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -16,7 +18,8 @@ module.exports = {
       ownerId: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        unique: true
+        unique: true,
+        references: { model: {tableName: "Users"}}
       },
       category: {
         type: Sequelize.STRING(50),
@@ -47,11 +50,15 @@ module.exports = {
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn('now')
+
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn('now')
+
       }
     });
   },
