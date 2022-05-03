@@ -38,7 +38,6 @@ module.exports = {
       city: {
         type: Sequelize.STRING(100),
         allowNull: false,
-        unique: true
       },
       state: {
         type: Sequelize.STRING(50),
