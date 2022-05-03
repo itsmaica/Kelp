@@ -10,6 +10,8 @@ import "./AddNewBeachForm.css"
 // const states = [CA, SD]
 
 const AddNewBeachForm = () => {
+    const history = useHistory();
+
     const dispatch = useDispatch();
     //might need session user??
     const [name, setName] = useState("");
@@ -32,6 +34,7 @@ const AddNewBeachForm = () => {
     const updateZipcode = (e) => setZipcode(e.target.value)
 
 
+    const handleSubmit
 
     return (
         <section>
@@ -42,7 +45,8 @@ const AddNewBeachForm = () => {
                 Name
                 <input
                     type="text"
-                    placeholder="Name"
+                    placeholder="name"
+                    value={name}
                     onChange={updateName}
                 >
                 </input>
@@ -51,6 +55,7 @@ const AddNewBeachForm = () => {
                 <input
                     type="text"
                     placeholder="type of beach"
+                    value={category}
                     onChange={updateCategory}
                 >
                 </input>
@@ -59,6 +64,7 @@ const AddNewBeachForm = () => {
                 <input
                     type="text"
                     placeholder="Wowow!"
+                    value={description}
                     onChange={updateDescription}
                 >
                 </input>
@@ -67,6 +73,7 @@ const AddNewBeachForm = () => {
                 <input
                     type="text"
                     placeholder="Address"
+                    value={address}
                     onChange={updateAddress}
                 >
                 </input>
@@ -74,7 +81,8 @@ const AddNewBeachForm = () => {
                 City
                 <input
                     type="text"
-                    placeholder="Address"
+                    placeholder="City"
+                    value={city}
                     onChange={updateCity}
                 >
                 </input>
@@ -83,6 +91,7 @@ const AddNewBeachForm = () => {
                 <input
                     type="text"
                     placeholder="State"
+                    value={state}
                     onChange={updateState}
                 >
                 </input>
@@ -91,6 +100,7 @@ const AddNewBeachForm = () => {
                 <input
                     type="text"
                     placeholder="00000"
+                    value={zipcode}
                     onChange={updateZipcode}
                 ></input>
                 <button>Submit</button>
