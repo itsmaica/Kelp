@@ -3,7 +3,7 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Beaches', {
+    return queryInterface.createTable('Beaches', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -33,7 +33,6 @@ module.exports = {
       address: {
         type: Sequelize.STRING(255),
         allowNull: false,
-        unique: true
       },
       city: {
         type: Sequelize.STRING(100),
