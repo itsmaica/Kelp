@@ -1,11 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+// import { Redirect } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 // import * as sessionctions from "../../store/session"
+// import { createBeach } from '../../store/beaches'
 import "./AddNewBeachForm.css"
 
-
+const Categories = [
+    "Saltwater",
+    "Freshwater"
+]
 //Array of us states??
 // const states = [CA, SD]
 
@@ -34,58 +38,94 @@ const AddNewBeachForm = () => {
     const updateZipcode = (e) => setZipcode(e.target.value)
 
 
-    const handleSubmit
+    const handleSubmit = e => {
+        e.preventDefault()
+
+        const payload = {
+            name,
+            category,
+            description,
+            address,
+            city,
+            state,
+            zipcode
+        }
+
+        console.log(payload)
+
+        history.push("/beaches")
+    }
+
+    // const createdBeach = await dispatch(createOneBeach(payload))
+
 
     return (
         <section>
             <form
                 className="add-new-beach"
                 //add onsubmit
+                onSubmit={handleSubmit}
             >
+                <h2>Add A New Beach</h2>
+                <label>
                 Name
-                <input
-                    type="text"
-                    placeholder="name"
-                    value={name}
-                    onChange={updateName}
-                >
-                </input>
+                    <input
+                        type="text"
+                        placeholder="name"
+                        value={name}
+                        onChange={updateName}
+                    >
+                    </input>
+                </label>
 
-                Category
-                <input
-                    type="text"
-                    placeholder="type of beach"
-                    value={category}
-                    onChange={updateCategory}
-                >
-                </input>
+                <label>
+                    Category
+                    <select
+                        value={category}
+                        onChange={updateCategory}
+                    >
+                        {Categories.map(category => (
+                            <option
+                                key={category}
+                            >
+                                {category}
+                            </option>
+                        ))}
+                    </select>
+                </label>
 
-                Description
-                <input
-                    type="text"
-                    placeholder="Wowow!"
-                    value={description}
-                    onChange={updateDescription}
-                >
-                </input>
+                <label>
+                    Description
+                    <input
+                        type="text"
+                        placeholder="Wowow!"
+                        value={description}
+                        onChange={updateDescription}
+                    >
+                    </input>
+                </label>
 
-                Address
-                <input
-                    type="text"
-                    placeholder="Address"
-                    value={address}
-                    onChange={updateAddress}
-                >
-                </input>
+                <label>
+                    Address
+                    <input
+                        type="text"
+                        placeholder="Address"
+                        value={address}
+                        onChange={updateAddress}
+                    >
+                    </input>
+                </label>
 
-                City
-                <input
-                    type="text"
-                    placeholder="City"
-                    value={city}
-                    onChange={updateCity}
-                >
-                </input>
+                <label>
+                    City
+                    <input
+                        type="text"
+                        placeholder="City"
+                        value={city}
+                        onChange={updateCity}
+                    >
+                    </input>
+                </label>
 
                 State
                 <input
