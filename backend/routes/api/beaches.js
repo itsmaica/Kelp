@@ -4,9 +4,8 @@ const asyncHandler = require('express-async-handler')
 //not sure if needed yet
 const { setTokenCookie, restoreUser } = require('../../utils/auth');
 
-//need to make Beaches table/model
-const Beach = require('../../db/models/beach');
-const Beaches = require('../../db/models')
+//models
+const { Beach } = require('../../db/models')
 
 //validations
 const beachValidation = require('../../validations/beachesValidations')
@@ -15,10 +14,10 @@ const beachValidation = require('../../validations/beachesValidations')
 const router = express.Router();
 
 //get beaches
-router.get('/', asyncHandler(async function(_req,res){
-    //might need to add more here
-    console.log(Beach)
-    const beaches = await Beach();
+router.get(
+    "/",
+    asyncHandler(async (_req, res) => {
+    const beaches = await Beach.findAll()
     return res.json(beaches);
 }))
 
@@ -35,8 +34,8 @@ router.get('/', asyncHandler(async function(_req,res){
 //create a beach
 router.post(
     "/",
-    asyncHandler(async(req, res, next) => {
-        console.log("reached the beach route!")
+    asyncHandler(async(_req, res, next) => {
+        // console.log("reached the beach route!")
     })
 )
 

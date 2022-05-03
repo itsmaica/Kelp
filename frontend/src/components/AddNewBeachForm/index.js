@@ -58,7 +58,7 @@ const AddNewBeachForm = ({ hideForm }) => {
             zipcode
         }
         return dispatch(createOneBeach())
-        console.log(payload)
+        // console.log(payload)
 
         history.push("/beaches")
     }

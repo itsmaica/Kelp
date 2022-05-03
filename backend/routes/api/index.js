@@ -10,7 +10,6 @@ const sessionRouter = require('./session.js');
 const usersRouter = require('./users.js');
 const beachesRouter = require('./beaches.js')
 
-
 router.use('/session', sessionRouter);
 
 router.use('/users', usersRouter);
