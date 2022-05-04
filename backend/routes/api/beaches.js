@@ -1,24 +1,26 @@
 const express = require('express');
+const router = express.Router();
+const csrf = require('csurf');
+//validations? { check, validationResults } = expressValidator for backend
 const asyncHandler = require('express-async-handler')
+const { response } = require('express');
+const csrfProctection = csrf({ cookie: true })
 
-//not sure if needed yet
-const { setTokenCookie, restoreUser } = require('../../utils/auth');
+/// boiler above line 6
 
 //models
-const { Beach } = require('../../db/models')
-
-//validations
-const beachValidation = require('../../validations/beachesValidations')
+const { Beach, Review } = require('../../db/models')
 
 
-const router = express.Router();
 
 //get beaches
 router.get(
     "/",
-    asyncHandler(async (_req, res) => {
+    asyncHandler(async (req, res) => {
     const beaches = await Beach.findAll()
+    // console.log("from the get route --> HELLO?!?", beaches)
     return res.json(beaches);
+    // res.send("Please work")
 }))
 
 //update a beach listing

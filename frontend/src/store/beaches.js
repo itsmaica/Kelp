@@ -1,64 +1,51 @@
 import { csrfFetch } from "./csrf";
 //create a beach
-const CREATE_BEACH = 'beach/CREATE_BEACH'
-const LOAD_BEACHES = 'beach/LOAD_BEACHES'
+const CREATE_BEACH = 'beach/createBeach'
+const LOAD_BEACHES = 'beach/loadBeaches'
 
 //see all the beaches
-export const loadBeaches = beaches => ({
+const loadBeaches = (beaches) => ({
     type: LOAD_BEACHES,
-    beaches
+    payload: beaches
 });
 
 //make a post for a beach
-export const createBeach = beach =>({
+const createBeach = beach =>({
         type: CREATE_BEACH,
-        beach
+        payload: beach
 })
 
 export const getBeaches = () => async dispatch => {
-    const response = await fetch(`/api/beaches`);
-
-    if (response.ok) {
+    const response = await csrfFetch(`/beaches`);
         const beaches = await response.json();
         dispatch(loadBeaches(beaches))
-    }
+        return response
 };
 
 //thunk for creating a beach
 export const createOneBeach = (payload) => async dispatch => {
     // console.log("hello")
-    const response = await csrfFetch(`/api/beaches`, {
+    const response = await csrfFetch(`/beaches/new`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
     });
-
-    if (response.ok) {
         const beach = await response.json();
         dispatch(createBeach(beach));
-        return beach
-    } else {
-        return undefined
-    }
+        return response
+
 }
 
-const beachReducer = ( state = {}, action ) => {
+
+const initialState = []
+
+const beachReducer = ( state = initialState, action ) => {
     switch(action.type) {
         case LOAD_BEACHES:
-            return {
-             ...state,
-             entries: [...action.beaches]
-            }
-        case CREATE_BEACH:
-            console.log(action.beach);
-            return{
-                ...state,
-                [action.beach.id]: action.beach
-            }
+            return action.payload
         default:
             return state;
     }
-
 }
 
 export default beachReducer;

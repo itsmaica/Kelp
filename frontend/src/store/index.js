@@ -6,7 +6,7 @@ import thunk from "redux-thunk";
 const rootReducer = combineReducers({
   // add reducer functions here
   session: sessionReducer,
-  beach: beachReducer
+  beaches: beachReducer
 });
 
 let enhancer;

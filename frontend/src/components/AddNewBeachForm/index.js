@@ -30,6 +30,7 @@ const AddNewBeachForm = ({ hideForm }) => {
     //might be a drop down of us states
     const [state, setState] = useState("")
     const [zipcode, setZipcode] = useState("00000")
+    const [errors, setErrors] = useState([]);
     //not creating one for phone number
 
     const updateName = (e) => setName(e.target.value)
@@ -42,8 +43,10 @@ const AddNewBeachForm = ({ hideForm }) => {
 
 
     useEffect(() => {
-        // dispatch
-    }, [dispatch])
+        const validations = [];
+        if (name.length < 5) validations.push("please enter longer name")
+        setErrors(validations);
+    }, [name])
 
     const handleSubmit = e => {
         e.preventDefault()
@@ -57,7 +60,7 @@ const AddNewBeachForm = ({ hideForm }) => {
             state,
             zipcode
         }
-        return dispatch(createOneBeach())
+       dispatch(createOneBeach(payload))
         // console.log(payload)
 
         history.push("/beaches")
@@ -79,6 +82,11 @@ const AddNewBeachForm = ({ hideForm }) => {
                 onSubmit={handleSubmit}
             >
                 <h2>Add A New Beach</h2>
+                <ul className="errors">
+                    {errors.map( error => (
+                        <li key={error} id="form-error">{error}</li>
+                    ))}
+                </ul>
                 <label>
                 Name
                     <input
@@ -155,7 +163,10 @@ const AddNewBeachForm = ({ hideForm }) => {
                     value={zipcode}
                     onChange={updateZipcode}
                 ></input>
-                <button>Submit</button>
+                <button
+                    disabled={!!errors.length}
+                    type="submit"
+                >Submit</button>
             </form>
         </section>
     )
