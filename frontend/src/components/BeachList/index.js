@@ -6,7 +6,6 @@ import './BeachList.css'
 const BeachList = () => {
     const dispatch = useDispatch();
     const beaches = useSelector(state => state.beaches)
-    console.log("HELLO THIS IS BEACHES", beaches)
 
     useEffect(() => {
         dispatch(getBeaches());
@@ -16,9 +15,17 @@ const BeachList = () => {
         <div>
             <h1>Beach List</h1>
             <ol>
-               {beaches.map((beach) => (
-                    <li key={beach.id}>{beach.name}</li>
-               ))}
+              {/* /* { {( () => {
+                   console.log(beaches)
+                   if (beaches)
+                {
+                   return beaches.map((beach) => (
+                        <li key={beach.id}>{beach.name}</li>
+                   ))} else {
+})()} */ }
+                { Object.values(beaches).map(beach =>(
+                <li key={beach.id}>{beach.name}</li>
+                ))}
             </ol>
         </div>
     )

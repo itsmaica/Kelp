@@ -35,9 +35,20 @@ router.get(
 
 //create a beach
 router.post(
-    "/",
-    asyncHandler(async(_req, res, next) => {
-        // console.log("reached the beach route!")
+    "/new",
+    asyncHandler(async(req, res, next) => {
+        console.log("beach from route fetch - does this route hit?")
+        const beach = await Beach.create({
+            name: req.body.name,
+            userId: req.body.userId,
+            category: req.body.category,
+            description: req.body.description,
+            address: req.body.address,
+            city: req.body.city,
+            state: req.body.state,
+            zip_code: req.body.zipcode
+        })
+        res.json(beach);
     })
 )
 

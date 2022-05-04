@@ -7,10 +7,11 @@ const LOAD_BEACHES = 'beach/loadBeaches'
 const loadBeaches = (beaches) => ({
     type: LOAD_BEACHES,
     payload: beaches
+    //array of obj from db
 });
 
 //make a post for a beach
-const createBeach = beach =>({
+export const createBeach = beach =>({
         type: CREATE_BEACH,
         payload: beach
 })
@@ -24,7 +25,7 @@ export const getBeaches = () => async dispatch => {
 
 //thunk for creating a beach
 export const createOneBeach = (payload) => async dispatch => {
-    // console.log("hello")
+    console.log("hello - beaches fetch")
     const response = await csrfFetch(`/beaches/new`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -33,15 +34,24 @@ export const createOneBeach = (payload) => async dispatch => {
         const beach = await response.json();
         dispatch(createBeach(beach));
         return response
-
 }
 
 
-const initialState = []
+const initialState = {}
 
 const beachReducer = ( state = initialState, action ) => {
+    let newState;
     switch(action.type) {
         case LOAD_BEACHES:
+            //keep previous beaches if there
+            newState = {...state}
+            action.payload.forEach(beach => {
+                newState[beach.id] = beach
+            })
+            console.log("Load beaches payload", action.payload)
+            return newState;
+        case CREATE_BEACH:
+            // console.log('create beach', action.payload)
             return action.payload
         default:
             return state;

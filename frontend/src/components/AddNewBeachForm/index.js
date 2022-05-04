@@ -2,9 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // import { Redirect } from "react-router-dom";
 import { useHistory } from "react-router-dom";
-// import * as sessionctions from "../../store/session"
-// import { createOneBeach } from '../../store/beaches'
-import { createOneBeach } from "../../store/beaches";
+import { createOneBeach, createBeach } from "../../store/beaches";
 import "./AddNewBeachForm.css"
 
 const Categories = [
@@ -18,8 +16,13 @@ const AddNewBeachForm = ({ hideForm }) => {
     const history = useHistory();
 
     const beach = useSelector(state => state.beach)
-
+    const userId = useSelector(state => state.session.user.id)
+    console.log(beach)
     const dispatch = useDispatch();
+
+
+    console.log('testing for adding a new beach component')
+
     //might need session user??
     const [name, setName] = useState("");
     //category will be a drop down = options: saltwater beach or freshwater beach
@@ -52,6 +55,7 @@ const AddNewBeachForm = ({ hideForm }) => {
         e.preventDefault()
 
         const payload = {
+            userId,
             name,
             category,
             description,
@@ -60,8 +64,8 @@ const AddNewBeachForm = ({ hideForm }) => {
             state,
             zipcode
         }
-       dispatch(createOneBeach(payload))
-        // console.log(payload)
+       dispatch(createBeach(payload))
+        console.log("handle submit", payload)
 
         history.push("/beaches")
     }
