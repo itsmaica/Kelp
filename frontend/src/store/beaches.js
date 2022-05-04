@@ -11,7 +11,7 @@ const loadBeaches = (beaches) => ({
 });
 
 //make a post for a beach
-export const createBeach = beach =>({
+export const createBeach = (beach) =>({
         type: CREATE_BEACH,
         payload: beach
 })
@@ -31,10 +31,15 @@ export const createOneBeach = (payload) => async dispatch => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
     });
+
+    if (response.ok) {
         const beach = await response.json();
         dispatch(createBeach(beach));
-        return response
-}
+        return beach
+    } else {
+        return undefined;
+    }
+};
 
 
 const initialState = {}
@@ -51,8 +56,9 @@ const beachReducer = ( state = initialState, action ) => {
             console.log("Load beaches payload", action.payload)
             return newState;
         case CREATE_BEACH:
-            // console.log('create beach', action.payload)
-            return action.payload
+            newState = {...state.beaches, [action.beaches.id]: action.beach}
+            return newState;
+            // return action.payload
         default:
             return state;
     }

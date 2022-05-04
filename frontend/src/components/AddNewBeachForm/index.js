@@ -15,13 +15,13 @@ const Categories = [
 const AddNewBeachForm = ({ hideForm }) => {
     const history = useHistory();
 
-    const beach = useSelector(state => state.beach)
+    const beaches = useSelector(state => state.beaches)
     const userId = useSelector(state => state.session.user.id)
-    console.log(beach)
+    console.log("beach state in the addBeachForm - as in the global state of beaches from the rootReducer?", beaches)
     const dispatch = useDispatch();
 
 
-    console.log('testing for adding a new beach component')
+    console.log('testing for adding a new beach component - The form works')
 
     //might need session user??
     const [name, setName] = useState("");
@@ -64,7 +64,7 @@ const AddNewBeachForm = ({ hideForm }) => {
             state,
             zipcode
         }
-       dispatch(createBeach(payload))
+       dispatch(createOneBeach(payload))
         console.log("handle submit", payload)
 
         history.push("/beaches")
