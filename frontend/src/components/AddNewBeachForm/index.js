@@ -1,16 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+// import { Redirect } from "react-router-dom";
 import { useHistory } from "react-router-dom";
-// import * as sessionctions from "../../store/session"
+import { createOneBeach, createBeach } from "../../store/beaches";
 import "./AddNewBeachForm.css"
 
-
+const Categories = [
+    "Saltwater",
+    "Freshwater"
+]
 //Array of us states??
 // const states = [CA, SD]
 
-const AddNewBeachForm = () => {
+const AddNewBeachForm = ({ hideForm }) => {
+    const history = useHistory();
+
+    const beaches = useSelector(state => state.beaches)
+    const userId = useSelector(state => state.session.user.id)
+    console.log("beach state in the addBeachForm - as in the global state of beaches from the rootReducer?", beaches)
     const dispatch = useDispatch();
+
+
+    console.log('testing for adding a new beach component - The form works')
+
     //might need session user??
     const [name, setName] = useState("");
     //category will be a drop down = options: saltwater beach or freshwater beach
@@ -21,6 +33,7 @@ const AddNewBeachForm = () => {
     //might be a drop down of us states
     const [state, setState] = useState("")
     const [zipcode, setZipcode] = useState("00000")
+    const [errors, setErrors] = useState([]);
     //not creating one for phone number
 
     const updateName = (e) => setName(e.target.value)
@@ -32,57 +45,117 @@ const AddNewBeachForm = () => {
     const updateZipcode = (e) => setZipcode(e.target.value)
 
 
+    useEffect(() => {
+        const validations = [];
+        if (name.length < 5) validations.push("please enter longer name")
+        setErrors(validations);
+    }, [name])
+
+    const handleSubmit = e => {
+        e.preventDefault()
+
+        const payload = {
+            userId,
+            name,
+            category,
+            description,
+            address,
+            city,
+            state,
+            zipcode
+        }
+       dispatch(createOneBeach(payload))
+        console.log("handle submit", payload)
+
+        history.push("/beaches")
+    }
+
+    // const createdBeach = await dispatch(createOneBeach(payload))
+
+    // if (createdBeach) {
+    //     history.push(`/beach/${createdBeach.id}`);
+    //     hideForm();
+    // }
+
 
     return (
         <section>
             <form
                 className="add-new-beach"
                 //add onsubmit
+                onSubmit={handleSubmit}
             >
+                <h2>Add A New Beach</h2>
+                <ul className="errors">
+                    {errors.map( error => (
+                        <li key={error} id="form-error">{error}</li>
+                    ))}
+                </ul>
+                <label>
                 Name
-                <input
-                    type="text"
-                    placeholder="Name"
-                    onChange={updateName}
-                >
-                </input>
+                    <input
+                        type="text"
+                        placeholder="name"
+                        value={name}
+                        onChange={updateName}
+                    >
+                    </input>
+                </label>
 
-                Category
-                <input
-                    type="text"
-                    placeholder="type of beach"
-                    onChange={updateCategory}
-                >
-                </input>
+                <label>
+                    Category
+                    <select
+                        value={category}
+                        onChange={updateCategory}
+                    >
+                        {Categories.map(category => (
+                            <option
+                                key={category}
+                            >
+                                {category}
+                            </option>
+                        ))}
+                    </select>
+                </label>
 
-                Description
-                <input
-                    type="text"
-                    placeholder="Wowow!"
-                    onChange={updateDescription}
-                >
-                </input>
+                <label>
+                    Description
+                    <input
+                        type="text"
+                        placeholder="Wowow!"
+                        value={description}
+                        onChange={updateDescription}
+                    >
+                    </input>
+                </label>
 
-                Address
-                <input
-                    type="text"
-                    placeholder="Address"
-                    onChange={updateAddress}
-                >
-                </input>
+                <label>
+                    Address
+                    <input
+                        type="text"
+                        placeholder="Address"
+                        value={address}
+                        onChange={updateAddress}
+                    >
+                    </input>
+                </label>
 
-                City
-                <input
-                    type="text"
-                    placeholder="Address"
-                    onChange={updateCity}
-                >
-                </input>
+                <label>
+                    City
+                    <input
+                        type="text"
+                        placeholder="City"
+                        value={city}
+                        onChange={updateCity}
+                    >
+                    </input>
+                </label>
 
                 State
                 <input
                     type="text"
                     placeholder="State"
+                    value={state}
                     onChange={updateState}
                 >
                 </input>
@@ -91,9 +164,13 @@ const AddNewBeachForm = () => {
                 <input
                     type="text"
                     placeholder="00000"
+                    value={zipcode}
                     onChange={updateZipcode}
                 ></input>
-                <button>Submit</button>
+                <button
+                    disabled={!!errors.length}
+                    type="submit"
+                >Submit</button>
             </form>
         </section>
     )

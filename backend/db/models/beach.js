@@ -14,7 +14,6 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
     Beach.belongsTo(models.User, { foreignKey: 'userId' });
     Beach.hasMany(models.Review, { foreignKey: 'beachId' });
-
   };
   return Beach;
 };

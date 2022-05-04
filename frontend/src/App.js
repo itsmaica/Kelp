@@ -5,6 +5,7 @@ import LoginFormPage from "./components/LoginFromPage"
 import SignupFormPage from "./components/SignupFormPage";
 import Navigation from "./components/Navigation";
 import AddNewBeachForm from "./components/AddNewBeachForm"
+import BeachList from "./components/BeachList";
 import * as sessionActions from "./store/session";
 
 function App() {
@@ -29,6 +30,9 @@ function App() {
           </Route>
           <Route path="/beaches/new">
             <AddNewBeachForm />
+          </Route>
+          <Route path="/beaches">
+            <BeachList />
           </Route>
         </Switch>
       )}

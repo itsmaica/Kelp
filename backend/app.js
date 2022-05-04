@@ -4,6 +4,8 @@ const cors = require('cors');
 const csurf = require('csurf');
 const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
+const beachesRouter = require('../backend/routes/api/beaches')
+
 
 const { environment } = require('./config');
 const isProduction = environment === 'production';
@@ -45,6 +47,12 @@ app.use(
 );
 
 app.use(routes); // Connect all the routes
+app.use('/beaches', beachesRouter);
+
+
+
+
+
 //sequelize error??
 const { ValidationError } = require('sequelize');
 // Catch unhandled requests and forward to error handler.
