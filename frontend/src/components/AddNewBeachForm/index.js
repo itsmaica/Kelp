@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // import { Redirect } from "react-router-dom";
 import { useHistory } from "react-router-dom";
-import { createOneBeach, createBeach } from "../../store/beaches";
+import { createOneBeach} from "../../store/beaches";
 import "./AddNewBeachForm.css"
 
 const Categories = [
@@ -15,9 +15,9 @@ const Categories = [
 const AddNewBeachForm = ({ hideForm }) => {
     const history = useHistory();
 
-    const beaches = useSelector(state => state.beaches)
+    // const beaches = useSelector(state => state.beaches)
     const userId = useSelector(state => state.session.user.id)
-    console.log("beach state in the addBeachForm - as in the global state of beaches from the rootReducer?", beaches)
+    // console.log("beach state in the addBeachForm - as in the global state of beaches from the rootReducer?", beaches)
     const dispatch = useDispatch();
 
 
