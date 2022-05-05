@@ -20,7 +20,6 @@ router.get(
     // console.log("Hello------from getAllBeachs")
     // console.log("from the get route --> HELLO?!?", beaches)
     return res.json(beaches);
-    // res.send("Please work")
 }))
 
 //get one beach - Route works, but thunk does not
@@ -74,7 +73,7 @@ router.delete(
     asyncHandler(async(req,res,next) => {
         const { beachId } = req.params
         const deleteThisBeach = await Beach.findByPk(beachId)
-        await deleteThisBeach.destroy()
+        return deleteThisBeach.destroy()
     })
 )
 
