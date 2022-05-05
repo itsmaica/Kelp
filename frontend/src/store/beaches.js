@@ -5,14 +5,14 @@ const LOAD_ONE_BEACH = 'beach/loadOneBeach'
 const CREATE_BEACH = 'beach/createBeach'
 
 //action - see all the beaches
-const loadBeaches = (beaches) => ({
+export const loadBeaches = (beaches) => ({
     type: LOAD_BEACHES,
     payload: beaches
     //array of obj from db
 });
 
 //action -see one beach
-const loadOneBeach = (oneBeach) => ({
+export const loadOneBeach = (oneBeach) => ({
     type: LOAD_ONE_BEACH,
     payload: oneBeach
 })
@@ -26,7 +26,7 @@ export const createBeach = (beach) =>({
 //thunk - get all beaches
 export const getBeaches = () => async dispatch => {
     const response = await csrfFetch(`/beaches`);
-        console.log("HELLO------- FROM getBEACHES thunk")
+        // console.log("HELLO------- FROM getBEACHES thunk")
         const beaches = await response.json();
         dispatch(loadBeaches(beaches))
         return response;
@@ -34,7 +34,7 @@ export const getBeaches = () => async dispatch => {
 
 //thunk - get one beach - NEED TO DEBUG
 export const getOneBeach = (oneBeach) => async dispatch => {
-    console.log("This is beach from getoneThunk", oneBeach)
+    console.log("This is beach from getoneThunk----------------------------------------", oneBeach)
     // console.log("--------are we getting into the fetch call from getOneBeach thunk?---------")
     const response = await csrfFetch(`/beaches/${oneBeach}`)
 
@@ -82,9 +82,10 @@ const beachReducer = ( state = initialState, action ) => {
             // console.log("Load beaches payload", action.payload)
             return newState;
         case LOAD_ONE_BEACH:
-            newState = {...state, beach: { [action.beach.id]: action.beach }}
+            newState = {...state, beaches: { [action.beach.id]: action.beach }}
             console.log("--LOAD_ONE_BEACH_PAYLOAD--", action.payload)
             // return action.payload
+            console.log(newState)
             return newState;
         case CREATE_BEACH:
             newState = {...state.beaches, [action.beaches.id]: action.beach}
