@@ -5,6 +5,7 @@ const csurf = require('csurf');
 const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
 const beachesRouter = require('../backend/routes/api/beaches')
+const userBeaches = require('../backend/routes/api/userBeaches')
 
 
 const { environment } = require('./config');
@@ -36,20 +37,22 @@ app.use(
     );
 
     // Set the _csrf token and create req.csrfToken method
-app.use(
-    csurf({
-        cookie: {
-            secure: isProduction,
-            sameSite: isProduction && "Lax",
-            httpOnly: true
-        }
-    })
-);
+
+// app.use(
+//     csurf({
+//         cookie: {
+//             secure: isProduction,
+//             sameSite: isProduction && "Lax",
+//             httpOnly: true
+//         }
+//     })
+// );
+
+
 
 app.use(routes); // Connect all the routes
 app.use('/beaches', beachesRouter);
-
-
+app.use('/users', userBeaches)
 
 
 

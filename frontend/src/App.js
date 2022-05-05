@@ -8,6 +8,8 @@ import AddNewBeachForm from "./components/AddNewBeachForm"
 import BeachList from "./components/BeachList";
 import ShowOneBeach from "./components/ShowOneBeach";
 import HomePage from "./components/HomePage"
+// import UserProfile from "./components/UserProfileComponent"
+import UserProfile from "./components/UserProfile";
 import * as sessionActions from "./store/session";
 
 // trying index.css for App - might need to make home page its own component
@@ -41,6 +43,9 @@ function App() {
           </Route>
           <Route path="/beaches/:beachId">
             <ShowOneBeach />
+          </Route>
+          <Route>
+            <UserProfile path="/:userId/beaches" />
           </Route>
         </Switch>
       )}

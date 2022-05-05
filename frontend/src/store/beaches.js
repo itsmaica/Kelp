@@ -76,17 +76,17 @@ export const createOneBeach = (payload) => async dispatch => {
 };
 
 // delete thunk - destroy a beach
-export const destroyOneBeach = (beachId) = async dispatch => {
-    console.log("**<---HELLO FROM DELETE_THUNK--->**")
-    const response = await fetch(`/beaches/${beachId}`, {
-        method: 'delete'
-    })
-    if (response.ok) {
-        const { beachId } = await response.json();
-        dispatch(removeBeach(beachId));
-        return "Deleted beach"
-    }
-}
+// export const destroyOneBeach = (beachId) = async dispatch => {
+//     console.log("**<---HELLO FROM DELETE_THUNK--->**")
+//     const response = await fetch(`/beaches/${beachId}`, {
+//         method: 'delete'
+//     })
+//     if (response.ok) {
+//         const { beachId } = await response.json();
+//         dispatch(removeBeach(beachId));
+//         return "Deleted beach"
+//     }
+// }
 
 const initialState = {}
 
@@ -109,7 +109,7 @@ const beachReducer = ( state = initialState, action ) => {
         case CREATE_BEACH:
             // newState = {...state}
             // newState.beaches = [action.beach.id]: action.beach
-            newState = {...state.beaches, [action.beaches.id]: action.beach}
+            newState = {...state.beaches, [action.payload.id]: action.payload}
             return newState;
             // return action.payload
         case REMOVE_BEACH:

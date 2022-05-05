@@ -30,6 +30,9 @@ const ShowOneBeach = () => {
                             <p>{beach.state}</p>
                             <p>{beach.city}</p>
                             <p>{beach.zip_code}</p>
+                            <button>Edit</button>
+                            <button>Delete</button>
+
                     </div>
                 : "Loading"}
         </div>

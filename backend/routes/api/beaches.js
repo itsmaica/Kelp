@@ -11,7 +11,6 @@ const csrfProctection = csrf({ cookie: true })
 //models
 const { Beach, Review } = require('../../db/models')
 
-
 //get beaches
 router.get(
     "/",
