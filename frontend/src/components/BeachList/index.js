@@ -24,8 +24,8 @@ const BeachList = () => {
             </ol>
 
             <Switch>
-                <Route path="/">
-
+                <Route path="/beaches/:beachId">
+                    <ShowOneBeach />
                 </Route>
             </Switch>
         </div>
