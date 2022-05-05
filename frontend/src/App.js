@@ -6,6 +6,7 @@ import SignupFormPage from "./components/SignupFormPage";
 import Navigation from "./components/Navigation";
 import AddNewBeachForm from "./components/AddNewBeachForm"
 import BeachList from "./components/BeachList";
+import ShowOneBeach from "./components/ShowOneBeach";
 import * as sessionActions from "./store/session";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
     <>
        <h1>Welcome to Kelp</h1>
          <h2>Find your perfect beach destination</h2>
+
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
