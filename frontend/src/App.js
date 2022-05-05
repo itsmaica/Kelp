@@ -7,7 +7,10 @@ import Navigation from "./components/Navigation";
 import AddNewBeachForm from "./components/AddNewBeachForm"
 import BeachList from "./components/BeachList";
 import ShowOneBeach from "./components/ShowOneBeach";
+import HomePage from "./components/HomePage"
 import * as sessionActions from "./store/session";
+
+// trying index.css for App - might need to make home page its own component
 
 function App() {
   const dispatch = useDispatch();
@@ -18,12 +21,9 @@ function App() {
 
   return (
     <>
-      <div>
-
-      </div>
-       <h1>Welcome to Kelp</h1>
-         <h2>Find your perfect beach destination</h2>
-
+         <Route path="/">
+            <HomePage />
+          </Route>
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
