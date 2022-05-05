@@ -18,6 +18,9 @@ function App() {
 
   return (
     <>
+      <div>
+
+      </div>
        <h1>Welcome to Kelp</h1>
          <h2>Find your perfect beach destination</h2>
 
