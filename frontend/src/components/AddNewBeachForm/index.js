@@ -14,10 +14,7 @@ const Categories = [
 
 const AddNewBeachForm = ({ hideForm }) => {
     const history = useHistory();
-
-    // const beaches = useSelector(state => state.beaches)
     const userId = useSelector(state => state.session.user.id)
-    // console.log("beach state in the addBeachForm - as in the global state of beaches from the rootReducer?", beaches)
     const dispatch = useDispatch();
 
 
@@ -30,11 +27,9 @@ const AddNewBeachForm = ({ hideForm }) => {
     const [description, setDescription] = useState("");
     const [address, setAddress] = useState("");
     const [city, setCity] = useState("");
-    //might be a drop down of us states
     const [state, setState] = useState("")
     const [zipcode, setZipcode] = useState("00000")
     const [errors, setErrors] = useState([]);
-    //not creating one for phone number
 
     const updateName = (e) => setName(e.target.value)
     const updateCategory = (e) => setCategory(e.target.value)
