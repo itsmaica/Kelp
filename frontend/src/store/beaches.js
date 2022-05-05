@@ -1,8 +1,8 @@
 import { csrfFetch } from "./csrf";
 //create a beach
-const LOAD_BEACHES = 'beach/loadBeaches'
-const LOAD_ONE_BEACH = 'beach/loadOneBeach'
-const CREATE_BEACH = 'beach/createBeach'
+const LOAD_BEACHES = 'beaches/loadBeaches'
+const LOAD_ONE_BEACH = 'beaches/loadOneBeach'
+const CREATE_BEACH = 'beaches/createBeach'
 
 //action - see all the beaches
 export const loadBeaches = (beaches) => ({
@@ -33,11 +33,10 @@ export const getBeaches = () => async dispatch => {
 };
 
 //thunk - get one beach - NEED TO DEBUG
-export const getOneBeach = (oneBeach) => async dispatch => {
-    console.log("This is beach from getoneThunk----------------------------------------", oneBeach)
+export const getOneBeach = (beachId) => async dispatch => {
+    console.log("This is beach from getOne THUNK----------------------------------------", beachId)
     // console.log("--------are we getting into the fetch call from getOneBeach thunk?---------")
-    const response = await csrfFetch(`/beaches/${oneBeach}`)
-
+    const response = await csrfFetch(`/beaches/${beachId}`)
     if (response.ok) {
         const oneBeach = await response.json();
         // console.log("This is the beach from the fetch in src", beach)
@@ -50,7 +49,7 @@ export const getOneBeach = (oneBeach) => async dispatch => {
 
 //thunk - create a beach
 export const createOneBeach = (payload) => async dispatch => {
-    console.log("HEllO------ from createNewBeach")
+    console.log("HEllO------ from createNewBeach THUNK")
     const response = await csrfFetch(`/beaches/new`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -67,7 +66,6 @@ export const createOneBeach = (payload) => async dispatch => {
     }
 };
 
-
 const initialState = {}
 
 const beachReducer = ( state = initialState, action ) => {
@@ -82,10 +80,9 @@ const beachReducer = ( state = initialState, action ) => {
             // console.log("Load beaches payload", action.payload)
             return newState;
         case LOAD_ONE_BEACH:
-            newState = {...state, beaches: { [action.beach.id]: action.beach }}
-            console.log("--LOAD_ONE_BEACH_PAYLOAD--", action.payload)
-            // return action.payload
-            console.log(newState)
+            newState = {...state}
+            newState.beach = action.payload
+            // action.payload
             return newState;
         case CREATE_BEACH:
             newState = {...state.beaches, [action.beaches.id]: action.beach}

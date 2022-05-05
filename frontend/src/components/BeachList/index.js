@@ -7,6 +7,7 @@ import ShowOneBeach from "../ShowOneBeach"
 import './BeachList.css'
 
 const BeachList = () => {
+
     const dispatch = useDispatch();
     const beaches = useSelector(state => state.beaches)
 
@@ -17,16 +18,14 @@ const BeachList = () => {
     return (
         <div>
             <h1>Beach List</h1>
-            <ol>
+            <ul>
                 { Object.values(beaches).map(beach =>(
                 <li key={beach.id}>{beach.name}</li>
                 ))}
-            </ol>
+            </ul>
 
             <Switch>
-                <Route path="/beaches/:beachId">
-                    <ShowOneBeach />
-                </Route>
+               
             </Switch>
         </div>
     )

@@ -36,8 +36,11 @@ function App() {
           <Route path="/beaches/new">
             <AddNewBeachForm />
           </Route>
-          <Route path="/beaches">
+          <Route exact path="/beaches">
             <BeachList />
+          </Route>
+          <Route path="/beaches/:beachId">
+            <ShowOneBeach />
           </Route>
         </Switch>
       )}
