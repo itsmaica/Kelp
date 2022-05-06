@@ -14,12 +14,15 @@ const Categories = [
 
 const AddNewBeachForm = ({ hideForm }) => {
     const history = useHistory();
-    
+
+    //doubles as edit form. check if beach already exists
+    const beachId = useSelector(state => state.session.userBeaches.beach)
+
     const userId = useSelector(state => state.session.user.id)
     const dispatch = useDispatch();
 
 
-    console.log('testing for adding a new beach component - The form works')
+    // console.log('testing for adding a new beach component - The form works')
 
     //might need session user??
     const [name, setName] = useState("");

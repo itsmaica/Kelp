@@ -1,0 +1,13 @@
+{
+    "id": 49,
+    "name": "The best beach",
+    "userId": 9,
+    "category": "",
+    "description": "sdfsdf",
+    "address": "sdfsdf",
+    "city": "sdfsdf",
+    "state": "sdf",
+    "zip_code": "00000",
+    "createdAt": "2022-05-06T06:13:42.974Z",
+    "updatedAt": "2022-05-06T06:13:42.974Z"
+}

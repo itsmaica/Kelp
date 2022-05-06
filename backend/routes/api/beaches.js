@@ -25,13 +25,8 @@ router.get(
 router.get(
     "/:beachId",
     asyncHandler(async(req, res) => {
-        // console.log("Testing route")
         const { beachId } = req.params;
-        // console.log( "This is beachId", beachId )
         const oneBeach = await Beach.findByPk( beachId );
-        // res.send("Getting the single beach")
-        // console.log("This is beach from find by pk", beach)
-        console.log("The route hit!!!!!!!!!")
         return res.json(oneBeach)
     })
 )

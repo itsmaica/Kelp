@@ -3,7 +3,9 @@ import { csrfFetch } from "./csrf";
 
 
 const GET_USER_BEACHES = 'userBeaches/getUserBeaches';
-const DELETE_USER_BEACH = 'useBeaches/deleteUserBeach'
+const DELETE_USER_BEACH = 'userBeaches/deleteUserBeach'
+const UPADTE_USER_BEACH = 'userBeaches/updateUserBeach'
+
 // const GET_ONE_USER_BEACH = 'userBeaches/getOneUserBeach';
 
 // get all of one users beaches
@@ -12,11 +14,19 @@ const getUserBeaches = (userBeaches) => ({
     payload: userBeaches
 })
 
+//update a beach
+const updateUserBeach = (beach) => ({
+    type: UPADTE_USER_BEACH,
+    // payload: updatedBeach
+})
+
+
 //delete a beach
 const destroyUserBeach = (beach) => ({
     type: DELETE_USER_BEACH,
     payload: beach
 })
+
 
 //get one of a users beaches
 // const getOneUserBeach = (oneUserBeach) => ({
@@ -29,15 +39,28 @@ export const populateUserBeaches = (userId) => async (dispatch) => {
     const response = await csrfFetch(`/api/usersBeaches/${userId}/beaches`)
 
     const userBeaches = await response.json();
-        console.log("USER_BEACHES THUNK-------", userBeaches);
         dispatch(getUserBeaches(userBeaches))
         return response;
 }
 
+
+//update a user beach
+export const changeOneUserBeach = (beachId, id) => async (dispatch) => {
+    const response = await csrfFetch(`/api/usersBeaches/${id}/beaches/${beachId}`, {
+        method: 'PUT',
+        headers: {"Content-Type" : "application/json"},
+        // body: JSON.stringify(beach),
+    })
+
+    const updatedBeach = await response.json();
+    dispatch(updateUserBeach(updatedBeach, id));
+    return response
+}
+
+
 //delete a user beach
 export const removeUserBeach = (beachId, id) => async (dispatch) => {
-    console.log(`/api/usersBeaches/${id}/beaches/${beachId}`)
-    const response = await csrfFetch(`/api/usersBeaches/${id}/beaches/${beachId}`, { method: 'DELETE'});
+    const response = await csrfFetch(`/api/usersBeaches/${id}/beaches/${beachId}`, {method: 'DELETE'});
         const beach = await response.json();
         dispatch(destroyUserBeach(beach));
         return response;
@@ -72,6 +95,9 @@ const userBeachesReducer = ( state = initialState, action) => {
             const id = action.payload.id
             delete newState[id]
             return newState;
+        // case UPADTE_USER_BEACH:
+        //     newState = {...state, [action.payload.id]: action.payload.updatedBeach},
+        //     action.payload.Beaches
         default:
             return state;
     }

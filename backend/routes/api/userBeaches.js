@@ -35,13 +35,44 @@ router.get(
 //     })
 // )
 
+//edit a beach
+
+router.put(
+    "/:id/beaches/:beachId",
+    asyncHandler(async(req,res) => {
+        const beachId = req.params.beachId;
+        const Beach = await Beach.findByPk(beachId)
+
+        console.log("the req.body----> ", req.body)
+
+        const { name, category, description, address, city, state, zipcode } = req.body
+
+        const beachInfo = {
+            userId : userId,
+            name,
+            category,
+            description,
+            address,
+            city,
+            state,
+            zip_code
+        }
+
+        const updatedBeach = await Beach.update(beachInfo)
+
+        console.log("Hello from userBeaches.put route!")
+        //goes to thunk
+        return res.json(updatedBeach)
+    })
+)
+
 // MIGHT NEED AN IF STATEMENT
 router.delete(
     "/:id/beaches/:beachId",
     asyncHandler(async(req, res) => {
         const beachId = req.params.beachId;
-        console.log("Hello from delete userBeaches route --> ROUTE HITS")
-        const beach = await Beach.findByPk(beachId, {
+        // console.log("Hello from delete userBeaches route --> ROUTE HITS")
+        const each = await Beach.findByPk(beachId, {
             include : Review
         })
         await Review.destroy ({

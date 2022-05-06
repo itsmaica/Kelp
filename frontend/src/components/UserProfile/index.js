@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory, useParams } from "react-router-dom"
-import { populateUserBeaches } from "../../store/userBeaches"
+import { populateUserBeaches, changeOneUserBeach } from "../../store/userBeaches"
 import { removeUserBeach } from "../../store/userBeaches"
 
 import './UserProfile.css'
@@ -28,7 +28,7 @@ const UserProfile = () => {
     function editButton(e, beachId){
         e.preventDefault();
         e.stopPropagation();
-        // history.push(`api/beaches/${beachId}/edit-form`)
+        history.push(`/beaches/new`)
     }
 
     function deleteButton(e, beachId, id) {
