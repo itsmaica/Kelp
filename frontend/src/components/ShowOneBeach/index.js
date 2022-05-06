@@ -21,6 +21,7 @@ const ShowOneBeach = () => {
             <h1>One Beach</h1>
                 {beach ?
                     <div>
+                        {/* <img src={require(`../../images/${beachId}.jpeg`)}/> */}
                         <h2>{`${beach.name}`}</h2>
                             <p>{beach.category}</p>
                             <p>{beach.description}</p>
@@ -29,6 +30,7 @@ const ShowOneBeach = () => {
                             <p>{beach.state}</p>
                             <p>{beach.city}</p>
                             <p>{beach.zip_code}</p>
+                            <a>Write a Review</a>
                     </div>
                 : "Loading"}
         </div>

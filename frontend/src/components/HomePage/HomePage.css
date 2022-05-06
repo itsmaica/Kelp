@@ -4,6 +4,7 @@
     justify-self: center;
     align-items: center;
     flex-direction: column;
+    height: 100vh;
 }
 
 .background-image-behind-search-bar {
@@ -12,7 +13,7 @@
     margin-top: 0px;
     height: 60vh;
     width: 100vw;
-    background-color: rgb(152, 200, 232);
+    background-color: rgb(119, 187, 233);
     z-index: -5;
     flex-shrink: 1;
 }
@@ -24,13 +25,20 @@
     flex-shrink: 1;
 }
 
+navigation-bar {
+    justify-content: center;
+    align-items: flex-end;
+    color: white;
+    z-index: 1;
+}
+
 h2 {
     position: relative;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 125%;
     color: #D32422;
     /* border: rgb(202, 202, 202) solid 4px; */
-    margin-top: 40%;
+    margin-top: 100px;
 }
 
 .kelp-logo {

@@ -11,7 +11,8 @@ const HomePage = () => {
     return (
         <div className="home-page-container">
             <nav className="navigation-bar">
-                {/* might add nav component inside */}
+                <div className="nav-left-beaches-link"></div>
+                <div className="nav-right"></div>
 
             </nav>
 
@@ -28,7 +29,10 @@ const HomePage = () => {
 
             <h2>Your Next Beach Destination Awaits</h2>
 
-            <div className="review-cards"></div>
+            <div className="review-cards">
+                <a className="beach-card" href="#"></a>
+                <a className="beach-card" href="#"></a>
+            </div>
 
             <div className="grey-footer"></div>
         </div>
