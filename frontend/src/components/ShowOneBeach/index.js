@@ -8,7 +8,6 @@ import './ShowOneBeach.css'
 const ShowOneBeach = () => {
 
     const { beachId } = useParams();
-    console.log(useParams())
 
     const dispatch = useDispatch();
     const beach = useSelector(state => state.beaches.beach)

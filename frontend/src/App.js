@@ -8,7 +8,6 @@ import AddNewBeachForm from "./components/AddNewBeachForm"
 import BeachList from "./components/BeachList";
 import ShowOneBeach from "./components/ShowOneBeach";
 import HomePage from "./components/HomePage"
-// import UserProfile from "./components/UserProfileComponent"
 import UserProfile from "./components/UserProfile";
 import * as sessionActions from "./store/session";
 

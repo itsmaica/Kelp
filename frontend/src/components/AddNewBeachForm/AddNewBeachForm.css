@@ -1,3 +1,7 @@
+body {
+    overflow-y: scroll;
+}
+
 form {
     background-color: blueviolet;
     height: 60%;

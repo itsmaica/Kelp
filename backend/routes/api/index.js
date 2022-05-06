@@ -12,11 +12,8 @@ router.use('/session', sessionRouter);
 
 router.use('/users', usersRouter);
 
-// router.use('/users', userBeaches)
-
 router.use('/usersBeaches', userBeachesRouter)
 
 router.use('/beaches', beachesRouter)
-
 
 module.exports = router;
