@@ -3,6 +3,7 @@ import { csrfFetch } from "./csrf";
 const LOAD_BEACHES = 'beaches/loadBeaches'
 const LOAD_ONE_BEACH = 'beaches/loadOneBeach'
 const CREATE_BEACH = 'beaches/createBeach'
+const REMOVE_BEACH = 'beaches/removeBeach'
 
 //action - see all the beaches
 export const loadBeaches = (beaches) => ({
@@ -23,9 +24,17 @@ export const createBeach = (beach) =>({
         payload: beach
 })
 
+//action - delete a beach
+export const removeBeach = (beachId) => ({
+    type:REMOVE_BEACH,
+    payload: beachId
+})
+
+
+
 //thunk - get all beaches
 export const getBeaches = () => async dispatch => {
-    const response = await csrfFetch(`/beaches`);
+    const response = await csrfFetch(`/api/beaches`);
         // console.log("HELLO------- FROM getBEACHES thunk")
         const beaches = await response.json();
         dispatch(loadBeaches(beaches))
@@ -34,9 +43,9 @@ export const getBeaches = () => async dispatch => {
 
 //thunk - get one beach - NEED TO DEBUG
 export const getOneBeach = (beachId) => async dispatch => {
-    console.log("This is beach from getOne THUNK----------------------------------------", beachId)
+    // console.log("This is beach from getOne THUNK----------------------------------------", beachId)
     // console.log("--------are we getting into the fetch call from getOneBeach thunk?---------")
-    const response = await csrfFetch(`/beaches/${beachId}`)
+    const response = await csrfFetch(`/api/beaches/${beachId}`)
     if (response.ok) {
         const oneBeach = await response.json();
         // console.log("This is the beach from the fetch in src", beach)
@@ -49,8 +58,8 @@ export const getOneBeach = (beachId) => async dispatch => {
 
 //thunk - create a beach
 export const createOneBeach = (payload) => async dispatch => {
-    console.log("HEllO------ from createNewBeach THUNK")
-    const response = await csrfFetch(`/beaches/new`, {
+    // console.log("HEllO------ from createNewBeach THUNK")
+    const response = await csrfFetch(`/api/beaches/new`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
@@ -65,6 +74,19 @@ export const createOneBeach = (payload) => async dispatch => {
         return undefined;
     }
 };
+
+// delete thunk - destroy a beach
+// export const destroyOneBeach = (beachId) = async dispatch => {
+//     console.log("**<---HELLO FROM DELETE_THUNK--->**")
+//     const response = await fetch(`/beaches/${beachId}`, {
+//         method: 'delete'
+//     })
+//     if (response.ok) {
+//         const { beachId } = await response.json();
+//         dispatch(removeBeach(beachId));
+//         return "Deleted beach"
+//     }
+// }
 
 const initialState = {}
 
@@ -85,9 +107,15 @@ const beachReducer = ( state = initialState, action ) => {
             // action.payload
             return newState;
         case CREATE_BEACH:
-            newState = {...state.beaches, [action.beaches.id]: action.beach}
+            // newState = {...state}
+            // newState.beaches = [action.beach.id]: action.beach
+            newState = {...state.beaches, [action.payload.id]: action.payload}
             return newState;
             // return action.payload
+        case REMOVE_BEACH:
+            newState = {...state};
+            delete newState[action.beachId];
+            return newState
         default:
             return state;
     }

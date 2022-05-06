@@ -11,7 +11,6 @@ const csrfProctection = csrf({ cookie: true })
 //models
 const { Beach, Review } = require('../../db/models')
 
-
 //get beaches
 router.get(
     "/",
@@ -70,9 +69,11 @@ router.post(
 
 router.delete(
     "/:beachId",
-    asyncHandler(async(req,res,next) => {
+    asyncHandler(async(req,res) => {
         const { beachId } = req.params
         const deleteThisBeach = await Beach.findByPk(beachId)
+        console.log(deleteThisBeach)
+        res.send("-------DELETE ROUTE HITS--------")
         return deleteThisBeach.destroy()
     })
 )

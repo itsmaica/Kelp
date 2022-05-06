@@ -18,15 +18,11 @@ const BeachList = () => {
     return (
         <div>
             <h1>Beach List</h1>
-            <ul>
-                { Object.values(beaches).map(beach =>(
-                <li key={beach.id}>{beach.name}</li>
-                ))}
-            </ul>
-
-            <Switch>
-               
-            </Switch>
+                <ul>
+                    { Object.values(beaches).map(beach =>(
+                    <li key={beach.id}>{beach.name}</li>
+                    ))}
+                </ul>
         </div>
     )
 }
