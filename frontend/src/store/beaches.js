@@ -99,7 +99,7 @@ const beachReducer = ( state = initialState, action ) => {
             // action.payload
             return newState;
         case CREATE_BEACH:
-            newState = {...state, [action.payload.id]: action.payload}
+            newState = {...state.beaches, [action.payload.id]: action.payload}
             return newState;
         case REMOVE_BEACH:
             newState = {...state};

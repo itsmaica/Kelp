@@ -2,6 +2,7 @@ import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import sessionReducer from './session';
 import beachReducer from "./beaches";
 import userBeachesReducer from "./userBeaches";
+// import reviewReducer from "./reviews"
 import thunk from "redux-thunk";
 
 const rootReducer = combineReducers({
