@@ -30,8 +30,6 @@ export const removeBeach = (beachId) => ({
     payload: beachId
 })
 
-
-
 //thunk - get all beaches
 export const getBeaches = () => async dispatch => {
     const response = await csrfFetch(`/api/beaches`);
@@ -101,7 +99,7 @@ const beachReducer = ( state = initialState, action ) => {
             // action.payload
             return newState;
         case CREATE_BEACH:
-            newState = {...state.beaches, [action.payload.id]: action.payload}
+            newState = {...state, [action.payload.id]: action.payload}
             return newState;
         case REMOVE_BEACH:
             newState = {...state};

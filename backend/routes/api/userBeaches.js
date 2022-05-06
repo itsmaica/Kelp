@@ -25,26 +25,37 @@ router.get(
 )
 
 //get one of the users beaches
-router.get(
-    "/:id/beaches/:beachId",
-    asyncHandler(async(req, res) => {
-        const { beachId } = req.params;
-        const oneUserBeach = await Beach.findByPk( beachId );
-        console.log("--get one user beaches route hits!!--")
-        return res.json(oneUserBeach);
-    })
-)
+// router.get(
+//     "/:id/beaches/:beachId",
+//     asyncHandler(async(req, res) => {
+//         const { beachId } = req.params;
+//         const oneUserBeach = await Beach.findByPk( beachId );
+//         console.log("--get one user beaches route hits!!--")
+//         return res.json(oneUserBeach);
+//     })
+// )
 
+// MIGHT NEED AN IF STATEMENT
 router.delete(
     "/:id/beaches/:beachId",
-    asyncHandler(async(req, res, next) => {
-        const { beachId } = req.params;
-        // const userId = req.params.id
+    asyncHandler(async(req, res) => {
+        const beachId = req.params.beachId;
         console.log("Hello from delete userBeaches route --> ROUTE HITS")
-        // res.send("Delete a beach");
-        const deleteThisUsersBeach = await Beach.findByPk(beachId)
-        await deleteThisUsersBeach.destroy();
-        res.json("Beach destroy!", deleteThisUsersBeach.id)
+        const beach = await Beach.findByPk(beachId, {
+            include : Review
+        })
+        await Review.destroy ({
+            where: {
+                beachId: beachId
+            }
+        })
+        await Beach.destroy({
+            where: {
+                id: beachId
+            }
+        });
+        //this will be given to thunk - pgk for json
+        res.json(beach)
     })
 )
 

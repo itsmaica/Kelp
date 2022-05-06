@@ -14,6 +14,7 @@ const Categories = [
 
 const AddNewBeachForm = ({ hideForm }) => {
     const history = useHistory();
+    
     const userId = useSelector(state => state.session.user.id)
     const dispatch = useDispatch();
 
