@@ -12,7 +12,8 @@ const { Beach, Review, User } = require('../../db/models')
 router.get(
     "/:id/beaches",
     asyncHandler(async(req, res) => {
-        const userId  = req.params.id
+        const userId = req.params.id
+        console.log("hello from get userBeaches route",userId)
         const userBeaches = await User.findByPk(userId, {
             include:[{
                     model: Beach

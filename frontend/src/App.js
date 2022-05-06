@@ -44,8 +44,8 @@ function App() {
           <Route path="/beaches/:beachId">
             <ShowOneBeach />
           </Route>
-          <Route>
-            <UserProfile path="/:userId/beaches" />
+          <Route exact path="/:userId/beaches">
+            <UserProfile />
           </Route>
         </Switch>
       )}

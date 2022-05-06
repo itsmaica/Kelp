@@ -11,9 +11,13 @@ const getUserBeaches = (userBeaches) => ({
 })
 
 export const populateUserBeaches = (userId) => async (dispatch) => {
-    const response = await csrfFetch(`/users/${userId}/beaches`)
 
+    console.log("hello from userBeaches thunk---->", userId)
+    const response = await csrfFetch(`/api/usersBeaches/${userId}/beaches`)
+
+    console.log("***===Populate userBeaches Thunk ===+**", response)
         const userBeaches = await response.json();
+        console.log("USERBEACHES", userBeaches)
         dispatch(getUserBeaches(userBeaches))
         return response;
 }
@@ -25,8 +29,11 @@ const userBeachesReducer = ( state = initialState, action) => {
     switch(action.type) {
         case GET_USER_BEACHES:
             newState = {...state}
-            const beaches = action.payload.Beaches
-            beaches.forEach(beach => newState[beach.id] = beach)
+            // const beaches = action.payload.Beach
+            console.log("Action.payload --->", action.payload)
+            // console.log("userBeaches reducer here --->>", beaches)
+            // console.log()
+            action.payload.Beaches.forEach(beach => newState[beach.id] = beach)
             return newState;
         default:
             return state;

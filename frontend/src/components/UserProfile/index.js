@@ -1,28 +1,58 @@
-// import { useEffect } from "react"
-// import { useDispatch, useSelector } from "react-redux"
-// import { Switch, Route, NavLink } from "react-router-dom"
-// import { populateUserBeaches } from "../../store/userBeaches"
+import { useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { Switch, Route, NavLink, useParams } from "react-router-dom"
+import { populateUserBeaches } from "../../store/userBeaches"
 
 // import './UserProfileComponent'
 
-// const UserProfile = () => {
-//     const dispatch = useDispatch();
-//     // const userBeaches = useSelector(state => state.userBeaches)
-//     // console.log("**--Hello from userProfile ---**",userBeaches)
+const UserProfile = () => {
+    const { userId } = useParams();
 
-//     useEffect(() => {
-//         dispatch(populateUserBeaches);
-//     }, [dispatch])
+    const dispatch = useDispatch();
+    const userBeaches = useSelector(state => state.userBeaches)
+    const user = useSelector(state => state.session.user)
+    console.log("======", user.username);
 
-//     return (
-//         <div>
-//             <h1>User Beaches</h1>
-//                 <ul>
+    // console.log("**--Hello from userProfile obj.entries ---**", Object.values(userBeaches))
 
-//                 </ul>
-//         </div>
-//     )
-// }
+    const beaches = Object.values(userBeaches)
+    console.log("=== beachesVariable", beaches[4])
 
-// export default UserProfile;
-// //
+    useEffect(() => {
+        dispatch(populateUserBeaches(userId));
+    }, [dispatch, userId])
+
+        return (
+        <>
+        <div>
+            <header>
+                <h1>{user.username}</h1>
+                    <img></img>
+            </header>
+
+            <h2>Recent Activity</h2>
+        </div>
+
+        <div className ="user-beaches">
+            <h2>Your Beaches</h2>
+            {beaches.map((beach) => {
+                    return (
+                       <>
+                        <h2>{beach.name}</h2>
+                            <p>{beach.description}</p>
+                            <p>{beach.category}</p>
+                            <p>{beach.address}</p>
+                            <p>{beach.city}</p>
+                            <p>{beach.state}</p>
+                            <p>{beach.zip_code}</p>
+                            <button>Edit</button>
+                            <button>Delete</button>
+                        </>
+                    )
+            })}
+        </div>
+        </>
+    )
+}
+
+export default UserProfile;

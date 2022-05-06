@@ -34,7 +34,7 @@ export const removeBeach = (beachId) => ({
 
 //thunk - get all beaches
 export const getBeaches = () => async dispatch => {
-    const response = await csrfFetch(`/beaches`);
+    const response = await csrfFetch(`/api/beaches`);
         // console.log("HELLO------- FROM getBEACHES thunk")
         const beaches = await response.json();
         dispatch(loadBeaches(beaches))
@@ -43,9 +43,9 @@ export const getBeaches = () => async dispatch => {
 
 //thunk - get one beach - NEED TO DEBUG
 export const getOneBeach = (beachId) => async dispatch => {
-    console.log("This is beach from getOne THUNK----------------------------------------", beachId)
+    // console.log("This is beach from getOne THUNK----------------------------------------", beachId)
     // console.log("--------are we getting into the fetch call from getOneBeach thunk?---------")
-    const response = await csrfFetch(`/beaches/${beachId}`)
+    const response = await csrfFetch(`/api/beaches/${beachId}`)
     if (response.ok) {
         const oneBeach = await response.json();
         // console.log("This is the beach from the fetch in src", beach)
@@ -58,8 +58,8 @@ export const getOneBeach = (beachId) => async dispatch => {
 
 //thunk - create a beach
 export const createOneBeach = (payload) => async dispatch => {
-    console.log("HEllO------ from createNewBeach THUNK")
-    const response = await csrfFetch(`/beaches/new`, {
+    // console.log("HEllO------ from createNewBeach THUNK")
+    const response = await csrfFetch(`/api/beaches/new`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)

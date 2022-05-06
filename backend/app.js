@@ -51,8 +51,7 @@ app.use(
 
 
 app.use(routes); // Connect all the routes
-app.use('/beaches', beachesRouter);
-app.use('/users', userBeaches)
+// app.use('/beaches', beachesRouter);
 
 
 
