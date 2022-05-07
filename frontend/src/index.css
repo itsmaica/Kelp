@@ -291,3 +291,8 @@ body {
     color: white;
     height: 30px;
 }
+
+/* review list */
+.rl-container {
+    background-color: purple;
+}

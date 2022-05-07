@@ -33,7 +33,7 @@ export const removeBeach = (beachId) => ({
 })
 
 export const makeNewReview = (review) => ({
-    Type: CREATE_REVIEW,
+    type: CREATE_REVIEW,
     payload: review
 })
 
@@ -78,7 +78,7 @@ export const createOneBeach = (payload) => async dispatch => {
 
 // creating a review thunk
 export const createNewReviewThunk = (review, beachId) => async (dispatch) => {
-    console.log(`/api/beaches/:beachId/reviews/new`)
+    console.log("Create review thunk", beachId)
     const response = await csrfFetch(`/api/beaches/${beachId}/reviews/new`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -86,26 +86,14 @@ export const createNewReviewThunk = (review, beachId) => async (dispatch) => {
     })
 
     if (response.ok) {
+        console.log("response hello------", response.ok)
         const review = await response.json();
         dispatch(makeNewReview(review));
-        return response;
+        // return response;
     } else {
         return undefined
     }
 }
-
-// delete thunk - destroy a beach
-// export const destroyOneBeach = (beachId) = async dispatch => {
-//     console.log("**<---HELLO FROM DELETE_THUNK--->**")
-//     const response = await fetch(`/beaches/${beachId}`, {
-//         method: 'delete'
-//     })
-//     if (response.ok) {
-//         const { beachId } = await response.json();
-//         dispatch(removeBeach(beachId));
-//         return "Deleted beach"
-//     }
-// }
 
 const initialState = {}
 
@@ -132,7 +120,8 @@ const beachReducer = ( state = initialState, action ) => {
             delete newState[action.beachId];
             return newState
          case CREATE_REVIEW:
-            newState = {...state.beach.reviews, [action.payload.id]: action.payload}
+             console.log("_______STATE.BEACH_____", state)
+            newState = {...state, [action.payload.id]: action.payload}
             return newState;
         default:
             return state;

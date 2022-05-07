@@ -21,8 +21,9 @@ router.get(
 
 //get one beach's reviews
 router.get(
-    "/beaches/:beachId/",
+    "/:beachId",
     asyncHandler(async(req,res) => {
+        console.log("REVIES FOR ONE BEACH GET ROUTE----->")
         const beachId = req.params.beachId
         const reviews = await Review.findAll({
             where: {
@@ -37,7 +38,7 @@ router.get(
     })
 )
 
-//testing it in beaches route for id 
+//testing it in beaches route for id
 // router.post(
 //     "/new",
 //     asyncHandler(async(req,res, next) => {

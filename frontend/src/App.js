@@ -11,9 +11,9 @@ import HomePage from "./components/HomePage"
 import UserProfile from "./components/UserProfile";
 import CreateReviewForm from "./components/CreateReviewForm"
 import BeachListTemp from "./components/BeachListTemp";
+import ReviewList from "./components/ReviewsList";
 import * as sessionActions from "./store/session";
 
-// trying index.css for App - might need to make home page its own component
 
 function App() {
   const dispatch = useDispatch();
@@ -52,8 +52,11 @@ function App() {
             <ShowOneBeach />
           </Route>
 
+          <Route exact path="/:beachId/reviews">
+          </Route>
+
           <Route exact path="/test">
-            {/* <BeachListTemp /> */}
+            <ReviewList />
           </Route>
         </Switch>
       )}
