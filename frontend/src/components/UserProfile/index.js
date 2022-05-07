@@ -19,7 +19,7 @@ const UserProfile = () => {
     // console.log("**--Hello from userProfile obj.entries ---**", Object.values(userBeaches))
 
     const beaches = Object.values(userBeaches)
-    console.log("=== beachesVariable", beaches[4])
+    // console.log("=== beachesVariable", beaches[4])
 
     useEffect(() => {
         dispatch(populateUserBeaches(userId));

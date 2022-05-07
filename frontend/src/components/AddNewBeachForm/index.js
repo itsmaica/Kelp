@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 // import { Redirect } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { createOneBeach} from "../../store/beaches";
-import "./AddNewBeachForm.css"
+
 
 const Categories = [
     "Saltwater",
@@ -14,12 +14,12 @@ const Categories = [
 
 const AddNewBeachForm = ({ hideForm }) => {
     const history = useHistory();
-    
+
     const userId = useSelector(state => state.session.user.id)
     const dispatch = useDispatch();
 
 
-    console.log('testing for adding a new beach component - The form works')
+    // console.log('testing for adding a new beach component - The form works')
 
     //might need session user??
     const [name, setName] = useState("");
@@ -75,13 +75,13 @@ const AddNewBeachForm = ({ hideForm }) => {
 
 
     return (
-        <section>
+        <div className="ab-container">
             <form
-                className="add-new-beach"
+                className="ab-add-new-beach"
                 //add onsubmit
                 onSubmit={handleSubmit}
             >
-                <h2>Add A New Beach</h2>
+                <h2 className="ab-header">Add A New Beach</h2>
                 <ul className="errors">
                     {errors.map( error => (
                         <li key={error} id="form-error">{error}</li>
@@ -164,11 +164,14 @@ const AddNewBeachForm = ({ hideForm }) => {
                     onChange={updateZipcode}
                 ></input>
                 <button
+                    className="ab-button"
                     disabled={!!errors.length}
                     type="submit"
-                >Submit</button>
+                >
+                    Submit
+                </button>
             </form>
-        </section>
+        </div>
     )
 }
 
