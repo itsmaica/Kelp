@@ -47,7 +47,7 @@ const UserProfile = () => {
             <h2>Recent Activity</h2>
         </div>
 
-        <div className ="user-beaches">
+        <div className ="up-user-beaches">
             <h2>Your Beaches</h2>
 
             {beaches ? beaches.map((beach) => {
@@ -62,14 +62,14 @@ const UserProfile = () => {
                             <p>{beach?.state}</p>
                             <p>{beach?.zip_code}</p>
                             <button
-                                className="edit-button"
+                                className="up-edit-button"
                                 id={`edit-button-${beach.id}`}
                                 onClick={(e) => {editButton(e, beach.id)}}
                             >
                                 Edit
                             </button>
                             <button
-                                className="delete-button"
+                                className="up-delete-button"
                                 id={`edit-button-${beach.id}`}
                                 onClick={(e) => deleteButton(e, beach.id, id)}
                             >

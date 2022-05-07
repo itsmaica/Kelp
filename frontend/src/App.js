@@ -9,6 +9,7 @@ import BeachList from "./components/BeachList";
 import ShowOneBeach from "./components/ShowOneBeach";
 import HomePage from "./components/HomePage"
 import UserProfile from "./components/UserProfile";
+import CreateReviewForm from "./components/CreateReviewForm"
 import * as sessionActions from "./store/session";
 
 // trying index.css for App - might need to make home page its own component
@@ -22,12 +23,12 @@ function App() {
 
   return (
     <>
-          {/* <Route path="/">
-            <HomePage />
-          </Route> */}
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          <Route exact path="/">
+            <HomePage />
+          </Route>
           <Route path="/login">
             <LoginFormPage />
           </Route>
@@ -45,6 +46,9 @@ function App() {
           </Route>
           <Route exact path="/:userId/beaches">
             <UserProfile />
+          </Route>
+          <Route path="/reviews/new">
+            <CreateReviewForm />
           </Route>
         </Switch>
       )}
