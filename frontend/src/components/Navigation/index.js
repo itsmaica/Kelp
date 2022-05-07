@@ -11,13 +11,13 @@ function Navigation({ isLoaded }){
   if (sessionUser) {
     sessionLinks = (
       <ProfileButton user={sessionUser} />
+      // <NavLink className="nav-link" to="/beaches">Beaches</NavLink>
     );
   } else {
     sessionLinks = (
       <>
-        <NavLink className="link" to="/login">Log In</NavLink>
-        <NavLink className="link" to="/signup">Sign Up</NavLink>
-        <NavLink className="Link" to="/beaches">Beaches</NavLink>
+        <NavLink className="nav-link" to="/login">Log In</NavLink>
+        <NavLink className="nav-link" to="/signup">Sign Up</NavLink>
       </>
     );
   }
@@ -26,6 +26,7 @@ function Navigation({ isLoaded }){
     <ul>
       <li>
         <NavLink exact to="/">Home</NavLink>
+        <NavLink className="nav-link" to="/beaches">Beaches</NavLink>
         {isLoaded && sessionLinks}
       </li>
     </ul>

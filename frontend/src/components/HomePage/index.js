@@ -11,7 +11,9 @@ const HomePage = () => {
     return (
         <div className="hp-home-page-container">
             <nav className="hp-navigation-bar">
-                <div className="hp-nav-left-beaches-link"></div>
+                <div className="hp-nav-left-beaches-link">
+                    <a  className="nav-beaches" href="/beaches"/>
+                </div>
                 <div className="hp-nav-right"></div>
 
             </nav>
