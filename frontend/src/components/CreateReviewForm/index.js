@@ -4,22 +4,23 @@ import { useHistory, useParams } from "react-router-dom";
 import { createNewReviewThunk } from "../../store/beaches";
 
 const CreateReviewForm = () => {
-    // const { beachId } = useParams();
+    const { beachId } = useParams();
     const history = useHistory();
     const dispatch = useDispatch()
 
 
     const user = useSelector(state => state.session.user)
     const beach = useSelector(state => state.beaches.beach)
+    // const beachId = beach?.id;
 
-    console.log('testing review form----->***')
+    // console.log('testing review form----->*** THIS IS BEACH ID', beachId)
 
     // const [name, setName] = useState("");
     const [name, setName] = useState("Demo User")
     const [rating, setRating] = useState(5);
     const [answer, setAnswer] = useState("");
     const [errors, setErrors] = useState([])
-    const [beachId, setBeachId] = useState("beach.id")
+    // const [beachId, setBeachId] = useState(`${beach.id}`)
 
     // const updateRating = setRating(e.target.value);
     const updateAnswer = (e) => setAnswer(e.target.value);
@@ -33,7 +34,7 @@ const CreateReviewForm = () => {
     }, [answer])
 
 
-    const handleSubmit = e => {
+    const handleSubmit = async e => {
         e.preventDefault();
 
         const review = {
@@ -44,9 +45,9 @@ const CreateReviewForm = () => {
             answer
         }
 
-        dispatch(createNewReviewThunk(review))
+        await dispatch(createNewReviewThunk(review, beachId))
         // dispatch(createNewReviewThunk(review, beachId))
-        history.push(`/beaches/${beachId}/`)
+        history.push(`/beaches/${beachId}`)
     }
 
     return (

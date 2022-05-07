@@ -78,6 +78,7 @@ router.delete(
 router.post(
     "/:beachId/reviews/new",
     asyncHandler(async(req,res) => {
+        const { beachId } = req.params
         const review = await Review.create({
             name: req.body.name,
             answer: req.body.name,

@@ -52,8 +52,8 @@ const reviewsReducer = (state=initialState, action) => {
     switch(action.type) {
         case LOAD_ONE_BEACH_REVIEWS:
             newState = {...state}
-            action.payload.reviews.forEach(review => {
-                newState[review.id] = review
+            action.payload.review.forEach(review => {
+                newState[action.payload.id] = action.payload
             })
             return newState;
         default:
@@ -62,3 +62,4 @@ const reviewsReducer = (state=initialState, action) => {
 }
 
 export default reviewsReducer;
+

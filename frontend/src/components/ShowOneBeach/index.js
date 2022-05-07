@@ -1,7 +1,7 @@
 import { useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux'
 import { getOneBeach, loadOneBeach } from '../../store/beaches'
-// import { grabOneBeachReviewsThunk } from "../../store/reviews"
+import { grabOneBeachReviewsThunk } from "../../store/reviews"
 import { useEffect, useState } from 'react';
 
 
@@ -17,32 +17,9 @@ const ShowOneBeach = () => {
 
 
     useEffect(() => {
-        dispatch(getOneBeach(beachId, beachId))
+        dispatch(getOneBeach(beachId))
+        // dispatch(grabOneBeachReviewsThunk(beachId))
     }, [dispatch, beachId]);
-
-    // const writeReview = e => {
-    //     e.preventDefault();
-    //     history.push(`${beachId}/reviews/new`)
-    // }
-
-    // useEffect(() => {
-    //     // dispatch(grabOneBeachReviewsThunk(beachId))
-    // }, dispatch, beachId)
-
-    // let reviewTemplate;
-
-    // if (beach.Reviews) {
-    //     console.log(beach.Reviews)
-    //     ReviewTemplate = (
-    //         <>
-    //         <h1>{review.name}</h1>
-    //         <h2>{review.answer}</h2>
-    //         </>
-    //     )
-    //     }
-    // }
-    // const reviewArray = Object.values(beach.Reviews)
-    // console.log("Hello",reviewArray)
 
 
     return (
@@ -52,6 +29,7 @@ const ShowOneBeach = () => {
                         {/* <h1>One Beach</h1> */}
                         {/* <img src={require(`../../images/${beachId}.jpeg`)}/> */}
                         <h1>{`${beach?.name}`}</h1>
+                            {/* <div>{ beach.Reviews[0].name }</div> */}
                             <p className="ob-description">{beach?.description}</p>
                             <div className="ob-ba">
                                 <div className="ob-address">
@@ -64,6 +42,14 @@ const ShowOneBeach = () => {
                                     >
                                         Write a Review</a>
                             </div>
+                            {beach?.Reviews.map((review) => {
+                                return (
+                                    <div>
+                                        <h1>{review?.name}</h1>
+                                        <p>{review?.answer}</p>
+                                    </div>
+                                )
+                            })}
                     </div>
                 : "Loading"}
         </div>

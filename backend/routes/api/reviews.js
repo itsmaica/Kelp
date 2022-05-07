@@ -23,6 +23,7 @@ router.get(
 router.get(
     "/:beachId",
     asyncHandler(async(req,res) => {
+        console.log("REVIES FOR ONE BEACH GET ROUTE----->")
         const beachId = req.params.beachId
         const reviews = await Review.findAll({
             where: {
