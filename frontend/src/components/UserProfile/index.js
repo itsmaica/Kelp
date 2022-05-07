@@ -4,7 +4,6 @@ import { useHistory, useParams } from "react-router-dom"
 import { populateUserBeaches } from "../../store/userBeaches"
 import { removeUserBeach } from "../../store/userBeaches"
 
-import './UserProfile.css'
 
 const UserProfile = () => {
     const { userId } = useParams();
@@ -64,14 +63,14 @@ const UserProfile = () => {
                             <button
                                 className="up-edit-button"
                                 id={`edit-button-${beach.id}`}
-                                onClick={(e) => {editButton(e, beach.id)}}
+                                onClick={(e) => {editButton(e, beach?.id)}}
                             >
                                 Edit
                             </button>
                             <button
                                 className="up-delete-button"
-                                id={`edit-button-${beach.id}`}
-                                onClick={(e) => deleteButton(e, beach.id, id)}
+                                id={`edit-button-${beach?.id}`}
+                                onClick={(e) => deleteButton(e, beach?.id, id)}
                             >
                                 Delete
                             </button>
