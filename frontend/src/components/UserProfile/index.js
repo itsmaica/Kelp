@@ -13,8 +13,8 @@ const UserProfile = () => {
     const userBeaches = useSelector(state => state.userBeaches)
     // console.log("----------- userbeaches",userBeaches)
     const user = useSelector(state => state.session.user)
-    const id = user.id
-    // console.log("====== USER", user);
+    const id = user?.id
+    console.log("====== USER", user);
 
     // console.log("**--Hello from userProfile obj.entries ---**", Object.values(userBeaches))
 
@@ -22,13 +22,13 @@ const UserProfile = () => {
     // console.log("=== beachesVariable", beaches[4])
 
     useEffect(() => {
-        dispatch(populateUserBeaches(userId));
+        dispatch(populateUserBeaches(user?.id));
     }, [dispatch])
 
     function editButton(e, beachId){
         e.preventDefault();
         e.stopPropagation();
-        // history.push(`api/beaches/${beachId}/edit-form`)
+        history.push(`api/beaches/${beachId}/edit-form`)
     }
 
     function deleteButton(e, beachId, id) {

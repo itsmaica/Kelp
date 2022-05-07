@@ -66,13 +66,6 @@ const AddNewBeachForm = ({ hideForm }) => {
         history.push("/beaches")
     }
 
-    // const createdBeach = await dispatch(createOneBeach(payload))
-
-    // if (createdBeach) {
-    //     history.push(`/beach/${createdBeach.id}`);
-    //     hideForm();
-    // }
-
 
     return (
         <div className="ab-container">

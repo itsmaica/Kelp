@@ -34,7 +34,7 @@ const BeachList = () => {
             <h4 className="bl-all-results">All Results</h4>
                 <ul>
                     { Object.values(beaches).map(beach =>(
-                    <li className ="bl-each-beach-li" >
+                    <li className ="bl-each-beach-li">
                         <div className="bl-container-div">
                             <a className="bl-a-tag" href={`/beaches/${beach.id}`} onClick={clickBeach}>{beach.name}</a>
                             <p className="bl-p-tag">{beach.description}</p>
