@@ -19,11 +19,11 @@ router.get(
     })
 )
 
-//get one beach's reviews
+//get All the reviews for ONE beach
 router.get(
     "/:beachId",
     asyncHandler(async(req,res) => {
-        console.log("REVIES FOR ONE BEACH GET ROUTE----->")
+        // console.log("REVIES FOR ONE BEACH GET ROUTE----->")
         const beachId = req.params.beachId
         const reviews = await Review.findAll({
             where: {
@@ -35,6 +35,22 @@ router.get(
         // console.log(reviews)
         return res.json(reviews)
         // console.log("hey maica")
+    })
+)
+
+//delete a review
+router.delete(
+    "/:id",
+    asyncHandler(async(req,res) => {
+        const id = req.params.id;
+        console.log("what is req.params", id)
+        console.log("-------greetings from delete REVIEW Route-----")
+        const review = await Review.findByPk(id)
+        // console.log("Delete this review", deleteThisReview)
+        await Review.destroy ({
+            where: {id}
+        })
+        return res.json(review);
     })
 )
 
