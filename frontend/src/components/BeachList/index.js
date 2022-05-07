@@ -6,8 +6,6 @@ import { getBeaches, getOneBeach } from '../../store/beaches'
 import ShowOneBeach from "../ShowOneBeach"
 
 
-import './BeachList.css'
-
 const BeachList = () => {
 
     const history = useHistory();
@@ -32,16 +30,16 @@ const BeachList = () => {
     }
 
     return (
-        <div>
-            <h1>Beach List</h1>
+        <div className="bl-big-container">
+            <h4 className="bl-all-results">All Results</h4>
                 <ul>
                     { Object.values(beaches).map(beach =>(
-                    <li className ="each-beach" key={beach.id}>
-                        <a  href={`/beaches/${beach.id}`}
-                            onClick={clickBeach}
-                        >
-                            {beach.name}
-                        </a>
+                    <li className ="bl-each-beach-li" >
+                        <div className="bl-container-div">
+                            <a className="bl-a-tag" href={`/beaches/${beach.id}`} onClick={clickBeach}>{beach.name}</a>
+                            <p className="bl-p-tag">{beach.description}</p>
+                            <img></img>
+                        </div>
                     </li>
                     ))}
                 </ul>

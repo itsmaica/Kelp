@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector, useStore } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-import { createNewReviewThunk } from "../../store/reviews";
+import { createNewReviewThunk } from "../../store/beaches";
 
 const CreateReviewForm = () => {
-    const { beachId } = useParams();
-
+    // const { beachId } = useParams();
     const history = useHistory();
     const dispatch = useDispatch()
+
 
     const user = useSelector(state => state.session.user)
     const beach = useSelector(state => state.beaches.beach)
@@ -19,6 +19,7 @@ const CreateReviewForm = () => {
     const [rating, setRating] = useState(5);
     const [answer, setAnswer] = useState("");
     const [errors, setErrors] = useState([])
+    const [beachId, setBeachId] = useState("beach.id")
 
     // const updateRating = setRating(e.target.value);
     const updateAnswer = (e) => setAnswer(e.target.value);
@@ -31,20 +32,21 @@ const CreateReviewForm = () => {
         setErrors(errors)
     }, [answer])
 
+
     const handleSubmit = e => {
         e.preventDefault();
 
         const review = {
             name,
             userId : user?.id,
-            beachId: beach?.id,
+            beachId,
             rating,
             answer
         }
 
-        dispatch(createNewReviewThunk(review, beachId))
-        console.log("Handle submit review ----Review", review )
-        history.push(`/beaches/beachId/reviews/new`)
+        dispatch(createNewReviewThunk(review))
+        // dispatch(createNewReviewThunk(review, beachId))
+        history.push(`/beaches/${beachId}/`)
     }
 
     return (
@@ -52,18 +54,19 @@ const CreateReviewForm = () => {
         <div className="crf-new-review-form-container">
             <h1 className="crf-beach-name">Demo User</h1>
             <div>
-                <form className="crf-review-input"
+                <form className="crf-review-input-f"
                         onSubmit={handleSubmit}
                 >
                     <input className="crf-review-input"
-                        type="text"
-                        placeholder="This place was so awesome, my friends and I have so so so much fun, and we can't wait to go back. The weather was perfect, and we saw a lot of cool wildlife!"
+                        type="textarea"
+                        placeholder=""
                         onChange={updateAnswer}
                     >
                     </input>
                     <button className="crf-post-review-button"
                         disabled={!!errors?.length}
                         type="submit"
+                        onClick={() => console.log('click!')}
                     >
                         Post Review
                     </button>

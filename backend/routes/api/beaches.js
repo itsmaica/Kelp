@@ -64,7 +64,6 @@ router.post(
 )
 
 // delete a beach
-
 router.delete(
     "/:beachId",
     asyncHandler(async(req,res) => {
@@ -78,7 +77,7 @@ router.delete(
 // write a review for a beach
 router.post(
     "/:beachId/reviews/new",
-    asyncHandler(async(req,res, next) => {
+    asyncHandler(async(req,res) => {
         const review = await Review.create({
             name: req.body.name,
             answer: req.body.name,

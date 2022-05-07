@@ -26,7 +26,6 @@ module.exports = {
       },
       rating: {
         type: Sequelize.INTEGER,
-        allowNull: false,
       },
       answer: {
         type: Sequelize.TEXT

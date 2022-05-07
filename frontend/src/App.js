@@ -10,6 +10,7 @@ import ShowOneBeach from "./components/ShowOneBeach";
 import HomePage from "./components/HomePage"
 import UserProfile from "./components/UserProfile";
 import CreateReviewForm from "./components/CreateReviewForm"
+import BeachListTemp from "./components/BeachListTemp";
 import * as sessionActions from "./store/session";
 
 // trying index.css for App - might need to make home page its own component
@@ -35,20 +36,24 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          <Route path="/beaches/new">
-            <AddNewBeachForm />
-          </Route>
           <Route exact path="/beaches">
             <BeachList />
           </Route>
-          <Route path="/beaches/:beachId">
-            <ShowOneBeach />
+          <Route path="/beaches/new">
+            <AddNewBeachForm />
           </Route>
           <Route exact path="/:userId/beaches">
             <UserProfile />
           </Route>
-          <Route exact path="beaches/:beachId/reviews/new">
+          <Route exact path="/beaches/:beachId/reviews/new">
             <CreateReviewForm />
+          </Route>
+          <Route exact path="/beaches/:beachId">
+            <ShowOneBeach />
+          </Route>
+
+          <Route exact path="/test">
+            {/* <BeachListTemp /> */}
           </Route>
         </Switch>
       )}
