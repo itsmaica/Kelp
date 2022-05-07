@@ -1,23 +1,29 @@
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux'
 import { getOneBeach, loadOneBeach } from '../../store/beaches'
 // import { grabOneBeachReviewsThunk } from "../../store/reviews"
 import { useEffect, useState } from 'react';
 
-import './ShowOneBeach.css'
 
 const ShowOneBeach = () => {
+
+    const history = useHistory();
 
     const { beachId } = useParams();
 
     const dispatch = useDispatch();
     const beach = useSelector(state => state.beaches.beach)
-    // console.log(beach.Review)
+    // console.log("Current beach id is what? ---->", beach)
 
 
     useEffect(() => {
         dispatch(getOneBeach(beachId))
     }, [dispatch, beachId]);
+
+    // const writeReview = e => {
+    //     e.preventDefault();
+    //     history.push(`${beachId}/reviews/new`)
+    // }
 
     // useEffect(() => {
     //     // dispatch(grabOneBeachReviewsThunk(beachId))
@@ -53,7 +59,12 @@ const ShowOneBeach = () => {
                             <p>{beach.state}</p>
                             <p>{beach.city}</p>
                             <p>{beach.zip_code}</p>
-                            <a href="/reviews/new">Write a Review</a>
+                            <button
+                                onClick={() => history.push(`/${beachId}/reviews/new`)}
+                            >
+                                Write a Review
+                            </button>
+                            {/* <a href={`${beach?.id}/reviews/new>`}>Write a Review</a> */}
                             <div>
                                 {/* <ul>{
                                     beach.Reviews.map((review) => {

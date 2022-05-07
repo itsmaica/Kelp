@@ -47,7 +47,7 @@ function App() {
           <Route exact path="/:userId/beaches">
             <UserProfile />
           </Route>
-          <Route path="/reviews/new">
+          <Route exact path="beaches/:beachId/reviews/new">
             <CreateReviewForm />
           </Route>
         </Switch>

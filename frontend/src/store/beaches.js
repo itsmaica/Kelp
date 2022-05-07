@@ -30,6 +30,7 @@ export const removeBeach = (beachId) => ({
     payload: beachId
 })
 
+
 //thunk - get all beaches
 export const getBeaches = () => async dispatch => {
     const response = await csrfFetch(`/api/beaches`);

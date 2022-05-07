@@ -75,4 +75,20 @@ router.delete(
     })
 )
 
+// write a review for a beach
+router.post(
+    "/:beachId/reviews/new",
+    asyncHandler(async(req,res, next) => {
+        const review = await Review.create({
+            name: req.body.name,
+            answer: req.body.name,
+            userId: req.body.userId,
+            beachId: req.body.beachId,
+            rating: req.body.rating,
+            answer: req.body.answer
+        })
+        return res.json(review);
+    })
+)
+
 module.exports = router;
