@@ -1,8 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import * as sessionActions from '../../store/session';
+import { useHistory, useParams } from 'react-router-dom'
+import { populateUserBeaches } from '../../store/userBeaches'
+
 
 function ProfileButton({ user }) {
+
+  const userId = useSelector(state => state.session.user.id)
+  // console.log("userId-->", userId)
+
+  const history = useHistory();
+
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
 
@@ -28,6 +37,13 @@ function ProfileButton({ user }) {
     dispatch(sessionActions.logout());
   };
 
+  const toProfile = (e, userId) => {
+    e.preventDefault();
+    dispatch(populateUserBeaches(userId))
+    history.push("/id/beaches")
+  }
+
+
   return (
     <>
       <button onClick={openMenu}>
@@ -37,6 +53,9 @@ function ProfileButton({ user }) {
         <ul className="profile-dropdown">
           <li>{user.username}</li>
           <li>{user.email}</li>
+          <li>
+            <button onClick={toProfile}>Profile</button>
+          </li>
           <li>
             <button onClick={logout}>Log Out</button>
           </li>

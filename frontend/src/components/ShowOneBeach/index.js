@@ -53,7 +53,7 @@ const ShowOneBeach = () => {
                             <p>{beach.state}</p>
                             <p>{beach.city}</p>
                             <p>{beach.zip_code}</p>
-                            <a>Write a Review</a>
+                            <a href="/reviews/new">Write a Review</a>
                             <div>
                                 {/* <ul>{
                                     beach.Reviews.map((review) => {
