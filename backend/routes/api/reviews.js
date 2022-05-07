@@ -40,18 +40,17 @@ router.get(
 
 //delete a review
 router.delete(
-    "/:reviewId",
+    "/:id",
     asyncHandler(async(req,res) => {
-        const reviewId = req.params.reviewId;
+        const id = req.params.id;
+        console.log("what is req.params", id)
         console.log("-------greetings from delete REVIEW Route-----")
-        const review = await Review.findByPk(reviewId)
+        const review = await Review.findByPk(id)
         // console.log("Delete this review", deleteThisReview)
         await Review.destroy ({
-            where: {
-                reviewId: reviewId
-            }
+            where: {id}
         })
-        return response;
+        return res.json(review);
     })
 )
 

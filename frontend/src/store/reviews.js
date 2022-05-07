@@ -2,14 +2,14 @@ import { csrfFetch } from "./csrf";
 
 // const CREATE_REVIEW = "reviews/createReview"
 const LOAD_ONE_BEACH_REVIEWS = "reviews/loadOneBeachReviews"
-const DELETE_REVIEW = "reviews/deleteReviews"
+// const DELETE_REVIEW = "reviews/deleteReviews"
 
 
 //destroy a review
-const destroyReview = (review) => ({
-    type: DELETE_REVIEW,
-    payload: review
-})
+// const destroyReview1 = (review) => ({
+//     type: DELETE_REVIEW,
+//     payload: review
+// })
 
 export const loadOneBeachReviews = (reviews) => ({
     type: LOAD_ONE_BEACH_REVIEWS,
@@ -31,15 +31,16 @@ export const grabOneBeachReviewsThunk = (beachId) => async (dispatch) => {
 
 
 //Delete Review Thunk
-export const removeReview = (reviewId) => async (dispatch) => {
-    console.log("HELLO FROM DELETE REVIEW THUNK------")
-    const response = await csrfFetch(`/api/reviews/${reviewId}`, {
-        method: 'DELETE'
-    })
-        const review = await response.json();
-        dispatch(destroyReview(review));
-        return response;
-}
+// export const removeReview = (reviewId) => async (dispatch) => {
+//     console.log("HELLO FROM DELETE REVIEW THUNK------")
+//     const response = await csrfFetch(`/api/reviews/${reviewId}`, {
+//         method: 'DELETE'
+//     })
+//     console.log("------ response",response);
+//         const review = await response.json();
+//         dispatch(destroyReview1(review));
+//         return response;
+// }
 
 const initialState = {}
 
@@ -51,11 +52,6 @@ const reviewsReducer = (state=initialState, action) => {
             action.payload.review.forEach(review => {
                 newState[action.payload.id] = action.payload
             })
-            return newState;
-        case DELETE_REVIEW:
-            newState = {...state}
-            const reviewId = action.payload.id
-            delete newState[reviewId]
             return newState;
         default:
             return state;

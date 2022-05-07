@@ -2,9 +2,9 @@ import { useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { getOneBeach, loadOneBeach } from '../../store/beaches';
 import { grabOneBeachReviewsThunk } from "../../store/reviews";
-import { removeReview} from "../../store/reviews";
+// import { removeReview} from "../../store/reviews";
+import { removeReviewInBeachesStore } from "../../store/beaches";
 import { useEffect, useState } from 'react';
-
 
 const ShowOneBeach = () => {
 
@@ -22,12 +22,13 @@ const ShowOneBeach = () => {
             .then(setIsLoaded(true))
             // mightneed to comment back out
         // dispatch(grabOneBeachReviewsThunk(beachId))
-    }, [dispatch, beachId]);
+    }, [dispatch]);
 
     const deleteButton = (e, reviewId) => {
             e.preventDefault();
             e.stopPropagation()
-            return dispatch(removeReview(reviewId))
+            dispatch(removeReviewInBeachesStore(reviewId))
+            .then(() => dispatch(getOneBeach(beachId)))
     }
 
     if (!isLoaded) {
@@ -36,7 +37,7 @@ const ShowOneBeach = () => {
 
         return (
             <div>
-                    {beach ?
+                    {beach  ?
                         <div className="ob-container">
                             {/* <h1>One Beach</h1> */}
                             {/* <img src={require(`../../images/${beachId}.jpeg`)}/> */}

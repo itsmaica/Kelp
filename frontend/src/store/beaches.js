@@ -5,6 +5,7 @@ const LOAD_ONE_BEACH = 'beaches/loadOneBeach'
 const CREATE_BEACH = 'beaches/createBeach'
 const REMOVE_BEACH = 'beaches/removeBeach'
 const CREATE_REVIEW = "beaches/createReview"
+const DESTROY_REVIEW = "beaches/destroyReview"
 
 
 //action - see all the beaches
@@ -32,11 +33,17 @@ export const removeBeach = (beachId) => ({
     payload: beachId
 })
 
+// create review
 export const makeNewReview = (review) => ({
     type: CREATE_REVIEW,
     payload: review
 })
 
+//delete a beaches review
+export const destroyReview = (review) => ({
+    type: DESTROY_REVIEW,
+    payload: review
+})
 
 //thunk - get all beaches
 export const getBeaches = () => async dispatch => {
@@ -95,6 +102,18 @@ export const createNewReviewThunk = (review, beachId) => async (dispatch) => {
     }
 }
 
+export const removeReviewInBeachesStore = (reviewId) => async (dispatch) => {
+    console.log("HELLO FROM DELETE REVIEW THUNK------")
+    const response = await csrfFetch(`/api/reviews/${reviewId}`, {
+        method: 'DELETE'
+    })
+    console.log("------ response",response);
+        const review = await response.json();
+        dispatch(destroyReview(review));
+        return response;
+}
+
+
 const initialState = {}
 
 const beachReducer = ( state = initialState, action ) => {
@@ -122,6 +141,16 @@ const beachReducer = ( state = initialState, action ) => {
          case CREATE_REVIEW:
              console.log("_______STATE.BEACH_____", state)
             newState = {...state, [action.payload.id]: action.payload}
+            return newState;
+        case DESTROY_REVIEW:
+            newState = {...state}
+            const reviewId = action.payload.id
+            const reviewsArray = newState.beach.Reviews
+            const filteredReviewsArray = reviewsArray.filter((review) => {
+                if (review.id !== reviewId) {
+                return review
+                }})
+            newState.beach.Reviews = filteredReviewsArray;
             return newState;
         default:
             return state;
