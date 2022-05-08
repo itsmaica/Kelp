@@ -75,9 +75,6 @@ const ShowOneBeach = () => {
             </div>
         )
     }
-
-
-
 }
 
 export default ShowOneBeach;

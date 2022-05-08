@@ -34,15 +34,6 @@ router.get(
     })
 )
 
-//update a beach listing
-// router.put(
-//     '/:id',
-//     beachValidation.validateUpdate,
-//     asyncHandler(async function (req,res) {
-//         const id = await Beaches.update(req.body);
-//         return res.redirect(`${req.baseUrl}/${id}`);
-//     })
-// );
 
 //create a beach
 router.post(
@@ -69,7 +60,6 @@ router.delete(
     asyncHandler(async(req,res) => {
         const { beachId } = req.params
         const deleteThisBeach = await Beach.findByPk(beachId)
-        console.log(deleteThisBeach)
         return deleteThisBeach.destroy()
     })
 )
@@ -90,5 +80,71 @@ router.post(
         return res.json(review);
     })
 )
+
+//edit a beach
+router.put(
+    "/:id",
+    asyncHandler(async(req,res) => {
+        const id = req.body.id
+
+
+        const newName = req.body.name
+        const newCategory = req.body.category
+        const newDescription = req.body.description
+        const newAddress = req.body.address
+        const newCity = req.body.city
+        const newState = req.body.state
+        const newZip_code = req.body.zip_code
+
+        const beach = await Beach.findByPk(id)
+
+        const { name, category, description, address, city, state, zip_code } = beach
+
+        if (name !== newName) {
+            beach.name = newName
+            await beach.save();
+         }
+         if (category !== newCategory) {
+            beach.category = newCategory
+            await beach.save();
+         }
+         if (description !== newDescription) {
+            beach.description = newDescription
+            await beach.save();
+         }
+         if (address !== newAddress) {
+            beach.address = newAddress
+            await beach.save();
+         }
+         if (city !== newCity) {
+            beach.city = newCity
+            await beach.save();
+         }
+         if (state !== newState) {
+            beach.state = newState
+            await beach.save();
+         }
+         if (zip_code !== newZip_code) {
+            beach.zip_code = newZip_code
+            await beach.save();
+         }
+
+        const updatedBeach = await Beach.findByPk(id)
+
+        return res.json(updatedBeach)
+    })
+)
+
+// -> req.body = the following
+// {
+//     id: 7,
+//     name: 'TESTING THE PUT ROUTE',
+//     category: '',
+//     description: 'test',
+//     address: 'test',
+//     city: 'test',
+//     state: 'test',
+//     zip_code: '00000'
+//   }
 
 module.exports = router;
