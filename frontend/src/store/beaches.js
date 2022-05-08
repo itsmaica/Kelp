@@ -6,6 +6,7 @@ const CREATE_BEACH = 'beaches/createBeach'
 const REMOVE_BEACH = 'beaches/removeBeach'
 const CREATE_REVIEW = "beaches/createReview"
 const DESTROY_REVIEW = "beaches/destroyReview"
+const UPDATE_ONE_BEACH = "beaches/updateBeach"
 
 
 //action - see all the beaches
@@ -43,6 +44,12 @@ export const makeNewReview = (review) => ({
 export const destroyReview = (review) => ({
     type: DESTROY_REVIEW,
     payload: review
+})
+
+// udpate beach
+export const updateOneBeach = (beach) => ({
+        type: UPDATE_ONE_BEACH,
+        payload: beach
 })
 
 //thunk - get all beaches
@@ -113,6 +120,21 @@ export const removeReviewInBeachesStore = (reviewId) => async (dispatch) => {
         return response;
 }
 
+//edit a beach
+export const updateBeachThunk = (payload, oldId) => async (dispatch) => {
+    console.log("Hello from PUT THUNK---", oldId)
+    const response = await csrfFetch(`/api/beaches/${oldId}`, {
+        method: 'PUT',
+        Headers: { "Content-type": "application/json" },
+        body: JSON.stringify(payload)
+    })
+
+    if (response.ok) {
+        const updatedBeach = await response.json()
+        dispatch(updateOneBeach(updatedBeach));
+        return response;
+    }
+}
 
 const initialState = {}
 
@@ -152,6 +174,10 @@ const beachReducer = ( state = initialState, action ) => {
                 }})
             newState.beach.Reviews = filteredReviewsArray;
             return newState;
+        case UPDATE_ONE_BEACH:
+            newState = {...state}
+            newState.beach = action.payload
+            return newState
         default:
             return state;
     }

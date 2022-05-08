@@ -1,28 +1,44 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { createOneBeach} from "../../store/beaches";
+import { useHistory, useParams } from "react-router-dom";
+import { createOneBeach, updateBeachThunk} from "../../store/beaches";
+import { populateUserBeaches } from "../../store/userBeaches"
+
 
 const Categories = [
     "Saltwater",
     "Freshwater"
 ]
 
-
-const AddNewBeachForm = ({ hideForm }) => {
+const EditOneBeach = () => {
     const history = useHistory();
 
+    const { beachId } = useParams();
+    console.log("This is id--------", beachId)
     const userId = useSelector(state => state.session.user.id)
     const dispatch = useDispatch();
+    const beachObj = useSelector(state => state.userBeaches)
+    const beach = beachObj[beachId]
+    console.log("This is beach---", beach)
 
-    const [name, setName] = useState("");
+    const oldAddress = beach.address
+    const oldCategory = beach.category
+    const oldCity = beach.city
+    const oldDescription = beach.description
+    const oldId = beach.id
+    const oldName = beach.name
+    const oldState = beach.state
+    const oldZipcode = beach.zip_code
 
-    const [category, setCategory] = useState(Categories[0]);
-    const [description, setDescription] = useState("");
-    const [address, setAddress] = useState("");
-    const [city, setCity] = useState("");
-    const [state, setState] = useState("")
-    const [zipcode, setZipcode] = useState("00000")
+    const [name, setName] = useState(oldName);
+    console.log("What is Name?? ----", name)
+
+    const [category, setCategory] = useState(oldCategory);
+    const [description, setDescription] = useState(oldDescription);
+    const [address, setAddress] = useState(oldAddress);
+    const [city, setCity] = useState(oldCity);
+    const [state, setState] = useState(oldState)
+    const [zipcode, setZipcode] = useState(oldZipcode)
     const [errors, setErrors] = useState([]);
 
     const updateName = (e) => setName(e.target.value)
@@ -45,6 +61,8 @@ const AddNewBeachForm = ({ hideForm }) => {
         setErrors(validations);
     }, [name, description, address, city, state, zipcode])
 
+
+
     const handleSubmit = e => {
         e.preventDefault()
 
@@ -58,10 +76,12 @@ const AddNewBeachForm = ({ hideForm }) => {
             state,
             zipcode
         }
-       dispatch(createOneBeach(payload))
-        console.log("handle submit", payload)
 
-        history.push("/beaches")
+       dispatch(updateBeachThunk(payload, oldId))
+        .then(()=> dispatch(populateUserBeaches(userId)))
+        .then(() => history.push(`/${userId}/beaches`))
+
+
     }
 
     return (
@@ -71,7 +91,7 @@ const AddNewBeachForm = ({ hideForm }) => {
                 //add onsubmit
                 onSubmit={handleSubmit}
             >
-                <h2 className="ab-header">Add A New Beach</h2>
+                <h2 className="ab-header">Edit Beach</h2>
                 <ul className="errors">
                     {errors.map( error => (
                         <li key={error} id="form-error">{error}</li>
@@ -165,4 +185,4 @@ const AddNewBeachForm = ({ hideForm }) => {
     )
 }
 
-export default AddNewBeachForm;
+export default EditOneBeach;
