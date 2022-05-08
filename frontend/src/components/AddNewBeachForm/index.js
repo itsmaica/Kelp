@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { createOneBeach} from "../../store/beaches";
+import { createOneBeach, getBeaches} from "../../store/beaches";
 
 const Categories = [
     "Saltwater",
-    "Freshwater"
+    "Freshwater",
+    "White Sand",
+    "Black Sand",
+    "Cave"
 ]
 
-
-const AddNewBeachForm = ({ hideForm }) => {
+const AddNewBeachForm = () => {
     const history = useHistory();
 
     const userId = useSelector(state => state.session.user.id)
@@ -58,17 +60,15 @@ const AddNewBeachForm = ({ hideForm }) => {
             state,
             zipcode
         }
-       dispatch(createOneBeach(payload))
-        console.log("handle submit", payload)
-
-        history.push("/beaches")
+        dispatch(createOneBeach(payload))
+            .then(() => dispatch(getBeaches()))
+        history.push(`/beaches`)
     }
 
     return (
         <div className="ab-container">
             <form
                 className="ab-add-new-beach"
-                //add onsubmit
                 onSubmit={handleSubmit}
             >
                 <h2 className="ab-header">Add A New Beach</h2>

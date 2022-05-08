@@ -7,7 +7,10 @@ import { populateUserBeaches } from "../../store/userBeaches"
 
 const Categories = [
     "Saltwater",
-    "Freshwater"
+    "Freshwater",
+    "White Sand",
+    "Black Sand",
+    "Cave"
 ]
 
 const EditOneBeach = () => {
