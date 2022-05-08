@@ -5,6 +5,8 @@ import { grabOneBeachReviewsThunk } from "../../store/reviews";
 import { removeReviewInBeachesStore } from "../../store/beaches";
 import { useEffect, useState } from 'react';
 import beachBanner from "../../images/beachBanner.jpeg"
+import icon from "../../images/icon.jpeg"
+
 
 const ShowOneBeach = () => {
 
@@ -15,7 +17,7 @@ const ShowOneBeach = () => {
     const dispatch = useDispatch();
     const beach = useSelector(state => state.beaches.beach);
     const currentUser = useSelector(state => state.session.user.id)
-    console.log("current user's id--->", currentUser)
+    // console.log("current user's id--->", currentUser)
 
     // if the current users id matches the review owner render the delete button. if not, don't show it and allow use.
 
@@ -62,18 +64,21 @@ const ShowOneBeach = () => {
                                     {beach?.Reviews.map((review) => {
                                         return (
                                             <div key={review?.id} className="review-container">
-                                                <h1>{review?.name}</h1>
-                                                <p>{review?.answer}</p>
-                                                { currentUser === review?.userId ?
+                                                <div className="ob-icon-name">
+                                                    <img className="user-icon-review" src={require(`../../images/icon.jpeg`)}/>
+                                                    <h3>{review?.name}</h3>
+                                                </div>
+                                                <p className="review-answer">{review?.answer}</p>
+                                                {/* { currentUser === review?.userId ? */}
                                                     <button
                                                     className="ob-delete-review-button"
                                                     id={`edit-button-${review?.id}`}
                                                     onClick={(e) => deleteButton(e, review?.id)}
                                                 >
                                                     Delete
-                                                </button> :
-                                                    <p>Hide Me</p>
-                                                }
+                                                </button>
+                                                    {/* <p>Hide Me</p> */}
+                                                {/* } */}
                                             </div>
                                         )
                                     })}

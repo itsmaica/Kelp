@@ -11,6 +11,10 @@ const Categories = [
     "Cave"
 ]
 
+// const US_States = [ AL, AK, AZ, AR, CA, CO, CT,
+// DE, FL, GA, HI, ID, IL, IN, IA, KS, KY, LA, ME,
+// MD, MA, MI, MN, MS, MO ]
+
 const AddNewBeachForm = () => {
     const history = useHistory();
 

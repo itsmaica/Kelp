@@ -346,8 +346,36 @@ body {
 /* One-Review */
 
 .review-container {
-    border: #0f1111 solid 2px;
+    /* border: #0f1111 solid 2px; */
     margin: 20px;;
+}
+
+.ob-icon-name {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.user-icon-review {
+    height: 50px;
+    width: 50px;
+    margin: 15px;
+}
+
+.review-answer {
+    /* border: black solid 1px; */
+    width: 90%;
+    height: 40%;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+.ob-delete-review-button {
+    position: absolute;
+    left: 94%;
+    bottom: 12%;
+    /* margin-left: 95%;
+    margin-top: 10%; */
 }
 
 
@@ -383,6 +411,8 @@ body {
     color: white;
     height: 30px;
 }
+
+
 
 /* review list */
 .rl-container {
