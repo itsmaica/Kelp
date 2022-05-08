@@ -19,10 +19,6 @@ const BeachList = () => {
         dispatch(getBeaches());
     }, [dispatch])
 
-    // useEffect(() => {
-    //     dispatch(grabOneBeachReviewsThunk(beachId))
-    // }, dispatch, beachId)
-
     const clickBeach = (beachId) => {
         // history.push(`/beaches/${beachId}`)
         // return dispatch(getOneBeach(beachId))
@@ -38,7 +34,9 @@ const BeachList = () => {
                         <div className="bl-container-div">
                             <a className="bl-a-tag" href={`/beaches/${beach.id}`} onClick={clickBeach}>{beach.name}</a>
                             <p className="bl-p-tag">{beach.description}</p>
-                            <img></img>
+                            <div className="beach-pic-container">
+                                <img className="beachPic" src={require('../../images/beach-pic.jpeg')}/>
+                            </div>
                         </div>
                     </li>
                     ))}

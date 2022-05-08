@@ -10,9 +10,8 @@ import ShowOneBeach from "./components/ShowOneBeach";
 import HomePage from "./components/HomePage"
 import UserProfile from "./components/UserProfile";
 import CreateReviewForm from "./components/CreateReviewForm"
-import BeachListTemp from "./components/BeachListTemp";
-import ReviewList from "./components/ReviewsList";
 import EditOneBeach from "./components/EditOneBeach";
+import Ratings from "./components/Ratings"
 import * as sessionActions from "./store/session";
 
 
@@ -64,7 +63,7 @@ function App() {
           </Route>
 
           <Route exact path="/test">
-            <ReviewList />
+            <Ratings />
           </Route>
 
           <Route exact path="/beaches/:beachId/edit-page">
