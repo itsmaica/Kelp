@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, forwardRef } from 'react'
 import { useHistory } from 'react-router-dom'
 import beachBanner from "../../images/beachBanner.jpeg"
 import banner2 from "../../images/banner2.jpeg"
 import banner3 from "../../images/banner3.jpeg"
+import flower from "../../images/flower.jpeg"
 
 
 import "./HomePage.css"
@@ -24,6 +25,7 @@ const HomePage = () => {
 
             <div className="hp-kelp-logo">
                 <a className="hp-kelp-link" href="/">kelp</a>
+                <img src={`../../images/flowers.jpeg`}>
             </div>
 
             <div className="hp-search-bar">Find cool places near you</div>
