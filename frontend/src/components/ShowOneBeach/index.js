@@ -16,7 +16,7 @@ const ShowOneBeach = () => {
     const history = useHistory();
     const dispatch = useDispatch();
     const beach = useSelector(state => state.beaches.beach);
-    const currentUser = useSelector(state => state.session.user.id)
+    const sessionUser = useSelector(state => state.session.user)
     // console.log("current user's id--->", currentUser)
 
     // if the current users id matches the review owner render the delete button. if not, don't show it and allow use.
@@ -69,16 +69,15 @@ const ShowOneBeach = () => {
                                                     <h3>{review?.name}</h3>
                                                 </div>
                                                 <p className="review-answer">{review?.answer}</p>
-                                                {/* { currentUser === review?.userId ? */}
+                                                { sessionUser?.id === review?.userId ?
                                                     <button
                                                     className="ob-delete-review-button"
                                                     id={`edit-button-${review?.id}`}
                                                     onClick={(e) => deleteButton(e, review?.id)}
                                                 >
                                                     Delete
-                                                </button>
-                                                    {/* <p>Hide Me</p> */}
-                                                {/* } */}
+                                                    </button>
+                                                    : <p></p>}
                                             </div>
                                         )
                                     })}

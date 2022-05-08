@@ -5,7 +5,8 @@ import { createNewReviewThunk } from "../../store/beaches";
 import { FaStar } from 'react-icons/fa';
 
 const CreateReviewForm = () => {
-    const { beachId } = useParams();
+    const { beachId, userId } = useParams();
+    console.log("------ useParams",useParams())
     const history = useHistory();
     const dispatch = useDispatch()
 
@@ -34,8 +35,9 @@ const CreateReviewForm = () => {
         if (answer.length < 5) errors.push("Please explain your rating to others.")
         if (answer.length > 1000) errors.push("Thank you for your awesome review!")
         // if (rating === 0) errors.push("Please leave a rating")
+        if (rating === null) errors.push("please add a rating")
         setErrors(errors)
-    }, [answer])
+    }, [answer, rating])
 
 
     const handleSubmit = async e => {
@@ -49,7 +51,9 @@ const CreateReviewForm = () => {
             answer
         }
 
-        await dispatch(createNewReviewThunk(review, beachId))
+        console.log("---review",review)
+
+       await dispatch(createNewReviewThunk(review, beachId))
         // dispatch(createNewReviewThunk(review, beachId))
         history.push(`/beaches/${beachId}`)
     }
@@ -89,6 +93,11 @@ const CreateReviewForm = () => {
                         onChange={updateAnswer}
                     >
                     </input>
+                    <ul>
+                        {errors.map((error) => (
+                            <li key={error}>{error}</li>
+                        ))}
+                    </ul>
                     <button className="crf-post-review-button"
                         disabled={!!errors?.length}
                         type="submit"

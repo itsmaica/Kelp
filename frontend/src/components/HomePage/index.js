@@ -4,6 +4,7 @@ import beachBanner from "../../images/beachBanner.jpeg"
 import banner2 from "../../images/banner2.jpeg"
 import banner3 from "../../images/banner3.jpeg"
 import flower from "../../images/flower.jpeg"
+import logo from "../../images/logo.png"
 
 
 import "./HomePage.css"
@@ -25,7 +26,7 @@ const HomePage = () => {
 
             <div className="hp-kelp-logo">
                 <a className="hp-kelp-link" href="/">kelp</a>
-                <img src={`../../images/flowers.jpeg`}>
+                <img className="kelp-logo" src={logo}/>
             </div>
 
             <div className="hp-search-bar">Find cool places near you</div>

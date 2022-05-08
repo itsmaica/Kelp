@@ -82,7 +82,7 @@ const AddNewBeachForm = () => {
                     ))}
                 </ul>
                 <label>
-                Name
+
                     <input
                         type="text"
                         placeholder="name"
@@ -109,10 +109,10 @@ const AddNewBeachForm = () => {
                 </label>
 
                 <label>
-                    Description
+
                     <input
                         type="text"
-                        placeholder="Wowow!"
+                        placeholder="Description"
                         value={description}
                         onChange={updateDescription}
                     >
@@ -120,7 +120,7 @@ const AddNewBeachForm = () => {
                 </label>
 
                 <label>
-                    Address
+
                     <input
                         type="text"
                         placeholder="Address"
@@ -131,7 +131,7 @@ const AddNewBeachForm = () => {
                 </label>
 
                 <label>
-                    City
+
                     <input
                         type="text"
                         placeholder="City"
@@ -141,7 +141,7 @@ const AddNewBeachForm = () => {
                     </input>
                 </label>
 
-                State
+
                 <input
                     type="text"
                     placeholder="State"
@@ -150,7 +150,7 @@ const AddNewBeachForm = () => {
                 >
                 </input>
 
-                Zip code
+           
                 <input
                     type="text"
                     placeholder="00000"

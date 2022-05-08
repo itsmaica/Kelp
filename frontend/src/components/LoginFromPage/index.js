@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import * as sessionActions from '../../store/session'
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useLocation } from 'react-router-dom';
 import './LoginForm.css'
+import login from "../../images/login.png"
 
 // const LoginFormPage() {
 //     const dispatch = useDispatch();
 //     const sessionUser = useSelector(state => state.session.user)
 // }
-
 
 const LoginFormPage = () => {
     const dispatch = useDispatch();
@@ -33,32 +33,60 @@ const LoginFormPage = () => {
           });
       }
 
-      return (
-        <form className="form" onSubmit={handleSubmit}>
-          <ul>
-            {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-          </ul>
-          <label>
-            Username or Email
-            <input
-              type="text"
-              value={credential}
-              onChange={(e) => setCredential(e.target.value)}
-              required
-            />
-          </label>
-          <label>
-            Password
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </label>
-          <button type="submit">Log In</button>
-        </form>
-      );
+      if (sessionUser) {
+        return null
+      } else {
+        return (
+          <>
+          <div id="login-header-wrapper">
+          </div>
+          <div id="login-container">
+
+            <div className='login-left'>
+              <h1 id="login-h1">Login to Kelp</h1>
+              <form className="login-form" onSubmit={handleSubmit}>
+              <ul>
+                {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+              </ul>
+              <label>
+                <input
+                className='login-input'
+                  type="text"
+                  placeholder='Email'
+                  value={credential}
+                  onChange={(e) => setCredential(e.target.value)}
+                  required
+                />
+              </label>
+              <label>
+                <input
+                className='login-input'
+                  type="password"
+                  placeholder='Password'
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              </label>
+              <button id="login-button" className="login-input" type="submit">Log In</button>
+            </form>
+            </div>
+
+            <div className="login-right">
+              <div className="login-circle-img">
+                  <img id="login-vector" src={login}/>
+              </div>
+            </div>
+
+          </div>
+
+
+          </>
+        );
+
+      }
+
+
 }
 
 export default LoginFormPage;

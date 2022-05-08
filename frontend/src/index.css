@@ -6,7 +6,120 @@ body {
 
 /* Navigation */
 .profile-dropdown {
-    margin-left: 100px;
+    margin-left: 400px;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    list-style: none;
+}
+
+.nav-ul {
+    list-style: none;
+}
+
+.nav-container {
+
+}
+
+
+.demo-button {
+    background-color: white;
+    border: none;
+    width: 50px;
+    height: ;
+}
+
+.nav-right {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    display: inline;
+    position: absolute;
+    margin-left: 70%;
+    width: 300px;
+}
+
+/* #beaches-button {
+
+} */
+
+#sign-up-button {
+    border: white solid 3px;
+    background-color: none;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 5px;
+    margin-left: 35%;
+}
+
+/* Login Page */
+
+#login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    width: 100vw;
+    height: 80vh;
+
+}
+
+#login-vector {
+    border-radius: 50%;
+}
+
+#login-header-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+}
+
+.login-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 500px;
+    margin: 40px;
+}
+#login-button {
+    background-color: #D32422;
+    color: white;
+    height: 30px;
+    border-radius: 2px;
+    border: none
+}
+
+.login-right{
+    width: 600px;
+    height: 400px;
+}
+
+#login-h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0px;
+    padding: 0px;
+}
+
+.login-input{
+    margin: 10px;
+    width: 300px;
+}
+
+.login-left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 600px;
+    height: 400px;
 }
 
 /* homepage */
@@ -23,7 +136,7 @@ body {
     position: absolute;
     top: 0px;
     margin-top: 0px;
-    height: 500px;
+    height: 700px;
     width: 100vw;
     background-color: rgb(119, 187, 233);
     z-index: -5;
@@ -51,10 +164,13 @@ body {
     font-size: 125%;
     color: #D32422;
     /* border: rgb(202, 202, 202) solid 4px; */
-    margin-top: 200px;
+    margin-top: 170px;
 }
 
 .hp-kelp-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 45px;
     font-weight: bolder;
     font-family: Arial, Helvetica, sans-serif;
@@ -67,6 +183,10 @@ body {
 .hp-kelp-link {
     text-decoration: none;
     color: black;
+}
+.kelp-logo {
+    height: 100px;
+    width: 100px;
 }
 
 .hp-search-bar {
@@ -372,8 +492,13 @@ body {
 
 .ob-delete-review-button {
     position: absolute;
-    left: 94%;
-    bottom: 12%;
+    background-color: white;
+    border: #00000041 solid 1px;
+    border-radius: 4px;;
+    color: grey;
+    margin-left: 90%;
+
+
     /* margin-left: 95%;
     margin-top: 10%; */
 }
