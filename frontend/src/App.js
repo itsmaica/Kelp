@@ -12,6 +12,7 @@ import UserProfile from "./components/UserProfile";
 import CreateReviewForm from "./components/CreateReviewForm"
 import BeachListTemp from "./components/BeachListTemp";
 import ReviewList from "./components/ReviewsList";
+import EditOneBeach from "./components/EditOneBeach";
 import * as sessionActions from "./store/session";
 
 
@@ -30,24 +31,31 @@ function App() {
           <Route exact path="/">
             <HomePage />
           </Route>
+
           <Route path="/login">
             <LoginFormPage />
           </Route>
+
           <Route path="/signup">
             <SignupFormPage />
           </Route>
+
           <Route exact path="/beaches">
             <BeachList />
           </Route>
+
           <Route path="/beaches/new">
             <AddNewBeachForm />
           </Route>
+
           <Route exact path="/:userId/beaches">
             <UserProfile />
           </Route>
+
           <Route exact path="/beaches/:beachId/reviews/new">
             <CreateReviewForm />
           </Route>
+
           <Route exact path="/beaches/:beachId">
             <ShowOneBeach />
           </Route>
@@ -58,6 +66,11 @@ function App() {
           <Route exact path="/test">
             <ReviewList />
           </Route>
+
+          <Route exact path="/beaches/:beachId/edit-page">
+            <EditOneBeach />
+          </Route>
+
         </Switch>
       )}
     </>

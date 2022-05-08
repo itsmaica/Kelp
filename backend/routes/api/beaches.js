@@ -85,8 +85,8 @@ router.post(
 router.put(
     "/:id",
     asyncHandler(async(req,res) => {
-        const id = req.body.id
-
+        const id = req.params.id
+        // console.log("Hello from PUT ROUTE_____---___", req.params.id)
 
         const newName = req.body.name
         const newCategory = req.body.category
@@ -95,6 +95,7 @@ router.put(
         const newCity = req.body.city
         const newState = req.body.state
         const newZip_code = req.body.zip_code
+        const userId = req.body.userId
 
         const beach = await Beach.findByPk(id)
 

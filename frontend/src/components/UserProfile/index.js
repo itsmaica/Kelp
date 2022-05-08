@@ -7,27 +7,28 @@ import { removeUserBeach } from "../../store/userBeaches"
 
 const UserProfile = () => {
     const { userId } = useParams();
+    const { beachId } = useParams();
     const history = useHistory()
     const dispatch = useDispatch();
     const userBeaches = useSelector(state => state.userBeaches)
-    // console.log("----------- userbeaches",userBeaches)
     const user = useSelector(state => state.session.user)
     const id = user?.id
-    console.log("====== USER", user);
-
-    // console.log("**--Hello from userProfile obj.entries ---**", Object.values(userBeaches))
 
     const beaches = Object.values(userBeaches)
-    // console.log("=== beachesVariable", beaches[4])
 
     useEffect(() => {
         dispatch(populateUserBeaches(user?.id));
     }, [dispatch])
 
+    const postABeach = e => {
+        e.preventDefault();
+        history.push("/beaches/new")
+    }
+
     function editButton(e, beachId){
         e.preventDefault();
         e.stopPropagation();
-        history.push(`api/beaches/${beachId}/edit-form`)
+        history.push(`/beaches/${beachId}/edit-page`)
     }
 
     function deleteButton(e, beachId, id) {
@@ -48,6 +49,12 @@ const UserProfile = () => {
 
         <div className ="up-user-beaches">
             <h2>Your Beaches</h2>
+            <button
+                type="button"
+                onClick={(e) => postABeach(e)}
+            >
+                Post a Beach
+            </button>
 
             {beaches ? beaches.map((beach) => {
 
@@ -82,8 +89,5 @@ const UserProfile = () => {
     )
 }
 
-{/* <button className='user-listings-edit-button' id={`edit-button-${location.id}`} onClick={(e) => {editButton(e, location.id)}} >Edit Listing</button>
-<button type="submit" className='user-listings-delete-button' id={`delete-button-${location.id}`}
-    onClick={(e) => deleteItem(e, location.id)}>Delete Listing</button> */}
 
 export default UserProfile;
