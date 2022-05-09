@@ -29,19 +29,6 @@ export const grabOneBeachReviewsThunk = (beachId) => async (dispatch) => {
     }
 }
 
-
-//Delete Review Thunk
-// export const removeReview = (reviewId) => async (dispatch) => {
-//     console.log("HELLO FROM DELETE REVIEW THUNK------")
-//     const response = await csrfFetch(`/api/reviews/${reviewId}`, {
-//         method: 'DELETE'
-//     })
-//     console.log("------ response",response);
-//         const review = await response.json();
-//         dispatch(destroyReview1(review));
-//         return response;
-// }
-
 const initialState = {}
 
 const reviewsReducer = (state=initialState, action) => {
