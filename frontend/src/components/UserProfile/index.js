@@ -48,7 +48,7 @@ const UserProfile = () => {
         <div className="profile-container">
             <div className="up-profile" >
                 <header>
-                    <h1>{user.username}</h1>
+                    <h1>{user?.username}</h1>
                         <img></img>
                 </header>
 

@@ -3,6 +3,8 @@ import { NavLink, Link, useLocation} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import * as sessionActions from "../../store/session"
+import logo from "../../images/logo.png"
+
 import './Navigation.css';
 
 function Navigation({ isLoaded }){
@@ -22,11 +24,13 @@ function Navigation({ isLoaded }){
     return dispatch(sessionActions.login({ credential, password }));
   };
 
+  let navBar;
+
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
       <ProfileButton user={sessionUser} />
-      // <NavLink className="nav-link" to="/beaches">Beaches</NavLink>
+
     );
   } else {
     sessionLinks = (
@@ -37,33 +41,18 @@ function Navigation({ isLoaded }){
             <NavLink className="nav-link" id="sign-up-button" to="/signup">Sign Up</NavLink>
 
           </div>
-          <form
-            onSubmit={demoUser}
-            className="demo-login"
-          >
-            <button id="demo-button">
-              Demo User
-            </button>
-          </form>
-          {/* <NavLink className="nav-link" id='beaches-button' to="/beaches">Beaches</NavLink> */}
         </div>
       </>
     );
   }
 
-  if (!sessionUser) {
-    sessionLinks = (
-      <NavLink to="/beaches">Kelp</NavLink>
-    )
-  }
-
-
   return (
     <ul className="nav-ul">
-      <li >
+      <li>
+        <div id="nav-align">
         <NavLink className='nav-link' id='beaches-button' to="/beaches">Beaches</NavLink>
-        <NavLink className="nav-link" exact to="/">Home</NavLink>
         {isLoaded && sessionLinks}
+        </div>
       </li>
     </ul>
   );

@@ -2,6 +2,7 @@
 
 body {
     margin: 0px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 /* Navigation */
@@ -21,8 +22,8 @@ body {
     list-style: none;
 }
 
-.nav-container {
-
+#beaches-button {
+    margin-top: 30px;
 }
 
 
@@ -65,8 +66,10 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: row;
-    width: 100vw;
+    width: 100%;
     height: 80vh;
+    padding-top: 50px;
+    overflow-x: hidden;
 
 }
 
@@ -79,6 +82,22 @@ body {
     justify-content: center;
     align-items: center;
     height: 100px;
+}
+.demo-login-l {
+    width: 500px;
+}
+
+#demo-button-l {
+    z-index: 1;
+    width: 500px;
+    position: absolute;
+    background-color: rgba(214, 214, 214, 0.499);
+    margin-top: 40px;
+    margin-left: 100px;
+    height: 30px;
+    width: 300px;
+    border-radius: 4px;
+    border: none;
 }
 
 .login-form {
@@ -164,7 +183,7 @@ body {
     font-size: 125%;
     color: #D32422;
     /* border: rgb(202, 202, 202) solid 4px; */
-    margin-top: 170px;
+    margin-top: 350px;
 }
 
 .hp-kelp-logo {
@@ -554,4 +573,107 @@ body {
 
 input[type="radio"]{
     display:none;
+}
+
+/* red banner */
+
+#login-header {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    background-color: #D32422;
+    height: 100px;
+    width: 100%;
+    overflow-x: hidden;
+    z-index: 2;
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    height: 50px;
+    width: 200px;
+}
+
+#white-log-login {
+    height: 10px;
+    width: 10px;
+}
+
+#login-kelp {
+    background-color: #D32422;
+    color: white;
+    /* height: 80px;
+    margin-top: 50px;
+    padding: 0px; */
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* sign up page  */
+
+.signup-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.demo-login-s {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+#sign-up-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 500px;
+    height: 500px;
+    margin-top: 10px;
+}
+
+
+.signup-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100px;
+
+}
+
+.connect {
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+.s-input {
+    margin: 10px;
+    width: 300px;
+}
+
+#signup-button {
+    width: 300px;
+    background-color: #D32422;
+    height: 100px;
+    color: white;
+    border-radius: 4px;
+    border: none;
+}
+
+#demo-button {
+    width: 300px;
+    border: none;
+    height: 35px;
+}
+
+#text {
+    color:#D32422
 }

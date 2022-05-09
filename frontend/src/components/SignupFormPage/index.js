@@ -27,49 +27,104 @@ function SignupFormPage() {
     return setErrors(['Confirm Password field must be the same as the Password field']);
   };
 
+  const demoUser = e => {
+    e.preventDefault();
+
+    const credential = "Demo-lition"
+    const password = "password";
+
+    return dispatch(sessionActions.login({ credential, password }));
+  };
+
   return (
-    <form onSubmit={handleSubmit}>
-      <ul>
-        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-      </ul>
-      <label>
-        Email
-        <input
-          type="text"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        Username
-        <input
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        Password
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        Confirm Password
-        <input
-          type="password"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          required
-        />
-      </label>
-      <button type="submit">Sign Up</button>
-    </form>
+    <>
+         <div id="login-header">
+              <div id="logo-container">
+                <h1 id="login-kelp">Kelp</h1>
+                {/* <img id="white-log-login" src={whiteLogo}/> */}
+              </div>
+          </div>
+        <div className="signup-section">
+
+
+
+
+          <div id="sign-up-container">
+            <h3 id="text">Sign up for Kelp</h3>
+            <p id='connect'>Connect with awesome places</p>
+            <form
+              onSubmit={demoUser}
+              className="demo-login-s"
+            >
+              <button
+                id="demo-button"
+              >
+                Continue as Demo User
+              </button>
+            </form>
+
+          <form className="signup-form" onSubmit={handleSubmit}>
+            <ul>
+              {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+            </ul>
+            <label>
+
+              <input
+                type="text"
+                value={email}
+                placeholder="Email"
+                className="s-input"
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </label>
+            <label>
+
+              <input
+                type="text"
+                value={username}
+                className="s-input"
+                placeholder="Username"
+                onChange={(e) => setUsername(e.target.value)}
+                required
+              />
+            </label>
+            <label>
+
+              <input
+                className="s-input"
+                placeholder="Password"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </label>
+            <label>
+
+              <input
+                className="s-input"
+                type="password"
+                placeholder="Confirm Password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                required
+              />
+            </label>
+            <button
+              id="signup-button"
+              type="submit"
+            >
+              Sign Up
+            </button>
+          </form>
+          </div>
+
+
+        </div>
+
+
+        </>
   );
 }
 

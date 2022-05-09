@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, useLocation } from 'react-router-dom';
 import './LoginForm.css'
 import login from "../../images/login.png"
+import whiteLogo from "../../images/whiteLogo.png"
 
 // const LoginFormPage() {
 //     const dispatch = useDispatch();
@@ -23,6 +24,15 @@ const LoginFormPage = () => {
         <Redirect to="/" />
     )
 
+    const demoUser = e => {
+      e.preventDefault();
+
+      const credential = "Demo-lition"
+      const password = "password";
+
+      return dispatch(sessionActions.login({ credential, password }));
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
         setErrors([]);
@@ -38,12 +48,28 @@ const LoginFormPage = () => {
       } else {
         return (
           <>
-          <div id="login-header-wrapper">
+          <div id="login-header">
+              <div id="logo-container">
+                <h1 id="login-kelp">Kelp</h1>
+                {/* <img id="white-log-login" src={whiteLogo}/> */}
+              </div>
           </div>
+
           <div id="login-container">
 
-            <div className='login-left'>
+
+            <div className='login-left' >
               <h1 id="login-h1">Login to Kelp</h1>
+
+              <form
+            onSubmit={demoUser}
+            className="demo-login-l"
+          >
+            <button id="demo-button-l">
+              Demo User
+            </button>
+          </form>
+
               <form className="login-form" onSubmit={handleSubmit}>
               <ul>
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}
