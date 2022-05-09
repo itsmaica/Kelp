@@ -16,29 +16,23 @@ Kelp is a soft clone of [Yelp](https://www.yelp.com/) where users can share thei
 
 1. Clone this reposity
 
-  `https://github.com/itsmaica/Kelp.git`
+    * `https://github.com/itsmaica/Kelp.git`
   
 2. Install denpendencies into the Backed and the Frontend by making a terminal for each one and then run the following:
 
-  `npm isntall`
+    * `npm isntall`
 
 3. Create a .env file based on the .env.example included.
 
 4. Set up your database with information from your .env and then run the following to create your database, migrate, and seed: 
  
-   `npx dotenv sequelize db:create`
-   `npx dotenv sequelize db:migrate` 
-   `npx dotenv sequelize db:seed:all`
+   * `npx dotenv sequelize db:create`
+   * `npx dotenv sequelize db:migrate` 
+   * `npx dotenv sequelize db:seed:all`
 
-Create database and migrate models
+5. Start the app for both backend and frontend using:
 
-npx dotenv sequelize db:create && npx dotenv sequelize db:migrate && npx dotenv sequelize db:seed:all
+  * `npm start`
 
-Setup your AWS bucket using AWS setup, change the bucket name to your bucket name in awsS3.js file, and update your .env file with AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY
-
-Start the app for both backend and frontend using:
-
-npm start
-
-You can use the Demo user or create an account
+6. Now you can use the Demo user or create an account
 
