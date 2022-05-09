@@ -22,7 +22,7 @@ Kelp is a soft clone of [Yelp](https://www.yelp.com/) where users can share thei
 
     * `npm isntall`
 
-3. Create a .env file based on the .env.example included.
+3. Create a .env file based on the .env.example included
 
 4. Set up your database with information from your .env and then run the following to create your database, migrate, and seed: 
  
@@ -36,3 +36,62 @@ Kelp is a soft clone of [Yelp](https://www.yelp.com/) where users can share thei
 
 6. Now you can use the Demo user or create an account
 
+# Features 
+
+# User Authentication 
+
+Users can make an account, login, and sign out. The Demo user feature allows logged out users to test the site before creating an account
+
+# Beaches 
+
+Guest Users:
+
+- Guest users can view a list of beaches that other users have posted to Kelp
+- Guest users can get the information for one beach
+
+
+Users: 
+
+- Users can view a list of beaches that other users have posted to Kelp
+- Users can get the information for one beach and the list of reviews posted about it
+- Users can create a beach posting of their own on their profile 
+- Users can edit their beach post on their profile
+- Users can delete their beach posting on their profile 
+
+# Reviews 
+
+Guest Users: 
+
+- Guest users can view the reviews oh a beach 
+- Guest users cannot delete the reviews of other users 
+
+Users: 
+
+- Users can create a review for a beach
+- Users can get to their review on the reviews list 
+- Users can delete their review and only their review
+
+# Deploy to Heroku 
+
+1. Create a new application in your Heroku account 
+
+2. Inside *Resources* add on "Heroku Postgres"
+
+3. Install Heroku CLI
+
+4. Log into Heroku on your terminal
+
+6 Add Heroku as a remote to your project's git repository with the following command and replace with the name of the application you created in the Heroku dashboard.
+
+   * `heroku git:remote -a <name-of-Heroku-app>`
+
+7. Update the "Reveal Config Vars" section
+
+8. Push to Heroku with: 
+
+   `git push heroku main`
+   
+9. Set up prodction database 
+
+   * `heroku run npm run sequelize db:migrate` 
+   * `heroku run npm run sequelize db:seed:all`
