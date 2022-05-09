@@ -34,47 +34,34 @@ function App() {
           <Route path="/login">
             <LoginFormPage />
           </Route>
-
-
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-
           <Route exact path="/beaches">
             <BeachList />
           </Route>
-
           <Route path="/beaches/new">
             <AddNewBeachForm />
           </Route>
-
           <Route exact path="/:userId/beaches">
             <UserProfile />
           </Route>
-
           <Route exact path="/beaches/:beachId/reviews/new">
             <CreateReviewForm />
           </Route>
-
           <Route exact path="/beaches/:beachId">
             <ShowOneBeach />
           </Route>
-
           <Route exact path="/:beachId/reviews">
           </Route>
-
           <Route exact path="/test">
             <Ratings />
           </Route>
-
           <Route exact path="/beaches/:beachId/edit-page">
             <EditOneBeach />
           </Route>
-
         </Switch>
       )}
-
-
     </>
   );
 }
