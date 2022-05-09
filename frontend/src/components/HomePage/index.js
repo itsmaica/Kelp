@@ -21,11 +21,11 @@ const HomePage = () => {
             </nav>
 
             <div className="hp-background-image-behind-search-bar">
-                <img className="hp-banner-image" src={require('../../images/banner3.jpeg')} />
+                <img className="hp-banner-image" src={banner3} />
             </div>
 
             <div className="hp-kelp-logo">
-                <a className="hp-kelp-link" href="/">kelp</a>
+                <a className="hp-kelp-link-homepage" href="/">kelp</a>
                 <img className="kelp-logo" src={logo}/>
             </div>
 

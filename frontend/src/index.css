@@ -7,7 +7,24 @@ body {
 
 /* Navigation */
 .profile-dropdown {
-    margin-left: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100px;
+    width: 100px;
+    margin-top: 400px;
+    margin-left: 70px;
+    margin-right: 80px;
+    background-color: whitesmoke;
+    font-size: 15px;
+}
+
+.b {
+    background-color: #D32422;
+    color: white;
+    border: none;
+    border-radius: 10px;
 }
 
 .nav-link {
@@ -186,7 +203,8 @@ body {
     margin-top: 350px;
 }
 
-.hp-kelp-logo {
+.hp-kelp-logo-b {
+    background-color: purple;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -196,12 +214,57 @@ body {
     margin-top: 140px;
     margin-bottom: 0%;
     z-index: -3;
-
+    width: 200px;
+    margin-right: 80%;
 }
 
-.hp-kelp-link {
+/* for banner */
+.hp-kelp-logo-b {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 45px;
+    font-weight: bolder;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 140px;
+    margin-bottom: 0%;
+    z-index: 4;
+    position: absolute;
+    margin-top: 0px;
+    height: 100px;
+    width: 100px;
+    margin-left: 50px;
+}
+
+.hp-kelp-link-b {
     text-decoration: none;
     color: black;
+    font-size: 50px;
+}
+.kelp-logo-b {
+    height: 50px;
+    width: 50px;
+}
+
+.hp-kelp-link-c {
+    text-decoration: none;
+    color: black;
+    font-size: 50px;
+    font-weight: bolder;
+    margin-left: 20px;
+    margin-top: 50px;
+}
+.kelp-logo-c {
+    height: 50px;
+    width: 50px;
+}
+
+
+.hp-kelp-link-homepage {
+    text-decoration: none;
+    color: black;
+    font-size: 50px;
+    font-weight: bolder;
 }
 .kelp-logo {
     height: 100px;
@@ -295,7 +358,7 @@ body {
 .crf-new-review-form-container {
     box-sizing: border-box;
     height: 450px;
-    width: 700px
+    margin-top: 100px;
 }
 
 .crf-id {
@@ -330,6 +393,49 @@ body {
 }
 
 /* Beach List */
+.beach-list-h {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    position: absolute;
+    top: 0;
+    border: black solid 3px;
+    background-color: whitesmoke;
+    z-index: 3;
+    width: 100%;
+    height: 100px;
+    position: fixed;
+}
+
+#demo-button-message-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    background-color: pink;
+    width: 350px;
+    height: 100px;
+    margin-left: 70%;
+
+}
+
+#demo-message {
+    color: #D32422;
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+#logout-button {
+    background-color: #D32422;
+    color: white;
+    font-weight: bold;
+    width: 140px;
+    height: 40px;
+    border-radius: 4px;
+    border: none;
+    font-size: 18px;
+}
 
 .bl-container-div {
     display: grid;
@@ -356,7 +462,7 @@ body {
     display: flex;
     justify-content: center;
     box-sizing: border-box;
-
+    margin-top: 100px;
 }
 
 .bl-each-beach-li {
@@ -405,6 +511,7 @@ body {
     height: 400px;
     width: 100vw;
     filter: brightness(55%);
+    margin-top: 90px;
 
 }
 
@@ -566,6 +673,10 @@ body {
 
 /* ratings */
 
+.rating-box {
+    margin-left: 30px;
+}
+
 .star {
     cursor: pointer;
     transition: color 200ms;
@@ -676,4 +787,93 @@ input[type="radio"]{
 
 #text {
     color:#D32422
+}
+
+
+/* demo nav on beach list */
+#demo-logout{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    background-color: #D32422;
+    color: white;
+    text-align: none;
+    text-decoration: none;
+    height: 30px;
+    border-radius: 4px;
+
+}
+#message {
+    color: #D32422;
+    font-weight: bolder;
+}
+
+.demo-navigation {
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    top: 0px;
+    left: 0px;
+    height: 120px;
+    width: 100%;
+    background-color: whitesmoke;
+    z-index: 5;
+
+}
+
+.nav-kelp-left-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    width: 200px;
+}
+
+/* .nav-kelp-right-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    width: 700px;
+} */
+
+
+#demo-kelp-nav-link{
+    color: black;
+    font-size: 30px;
+    font-weight: bolder;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+}
+
+#logo-header {
+    height: 50px;
+    width: 50px;
+}
+
+.nav-kelp-left-container{
+    width: 200px;
+}
+
+.nav-kelp-right-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 450px;
+}
+
+#apples{
+
+}
+
+.profile-button{
+    color: green
+}
+
+#prof-button {
+    background-color: whitesmoke;
+    border: none;
+
 }

@@ -13,6 +13,7 @@ const CreateReviewForm = () => {
 
     const user = useSelector(state => state.session.user)
     const beach = useSelector(state => state.beaches.beach)
+    console.log("logged-out user----", user)
 
     const [name, setName] = useState("Demo User")
     const [rating, setRating] = useState(null);
@@ -44,8 +45,9 @@ const CreateReviewForm = () => {
 
         console.log("---review",review)
 
-       await dispatch(createNewReviewThunk(review, beachId))
+        await dispatch(createNewReviewThunk(review, beachId))
         history.push(`/beaches/${beachId}`)
+
     }
 
     return (

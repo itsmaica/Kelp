@@ -29,8 +29,7 @@ function Navigation({ isLoaded }){
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
-      <ProfileButton user={sessionUser} />
-
+      <ProfileButton className="profile-button" user={sessionUser} />
     );
   } else {
     sessionLinks = (
@@ -43,8 +42,40 @@ function Navigation({ isLoaded }){
           </div>
         </div>
       </>
-    );
+    )
   }
+
+  if ((sessionUser?.id === 1)) {
+    sessionLinks = (
+      <>
+        <div className="demo-navigation">
+
+          <div className="nav-kelp-left-container">
+            <NavLink id="demo-kelp-nav-link" to="/">Kelp</NavLink>
+            <img id="logo-header" src={logo}/>
+          </div>
+
+          <div className="nav-kelp-right-container">
+            <ProfileButton className="profile-button" user={sessionUser} />
+            <p id="message">Welcome, Demo User!</p>
+            <NavLink id="demo-logout" to="/">Logout</NavLink>
+          </div>
+
+        </div>
+      </>
+    )
+  };
+
+  if (sessionUser?.id === 1 && pathname === "/") {
+    sessionLinks = (
+      <>
+        <ProfileButton className="profile-button" user={sessionUser} />
+        <p>Welcome, Demo User</p>
+        <NavLink id="-demo-logout" to="/">Logout</NavLink>
+      </>
+    )
+  };
+
 
   return (
     <ul className="nav-ul">
