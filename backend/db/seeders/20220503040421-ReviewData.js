@@ -48,35 +48,35 @@ module.exports = {
         answer: 'Beach was really crowded but the water was great for kids it was not very deep until you go pretty far into the water. My kids loved it.'
       },
       {
-        name: 'Gary Green',
+        name: 'Gary Gomez',
         userId: 5,
         beachId: 1,
         rating: 5,
         answer: 'Nice park with good views, a lava tube walk through and a black sand beach for swimming. A walking path leads to additional views. A good place to stop on the road to Hana.'
       },
       {
-        name: 'Gary Green',
+        name: 'Gary Gomez',
         userId: 5,
         beachId: 3,
         rating: 5,
         answer: 'We were particularly lucky to see Waimea Bay on a high surf day. The waves were especially good this day and quite a few surfers were taking advantage of it. It was fun to watch.'
       },
       {
-        name: 'Gary Green',
+        name: 'Gary Gomez',
         userId: 5,
         beachId: 5,
         rating: 4,
         answer: 'This may be the most beautiful park I have been to. You must not miss. The views walking around are breathtaking. You can enjoy a couple hours laying out at the beach if you wish to as well. There is an amazing cave down by the water inlet that is magical. Be prepared when you come here; at least during COVID, there was nowhere to buy water/food or go inside for a bit of shade. Still, absolutely amazing park. Enjoy!'
       },
       {
-        name: 'Joe Rogan',
+        name: 'Joe Krogan',
         userId: 6,
         beachId: 5,
         rating: 4,
         answer: 'Water was extremely cold in July, way too cold for a swim, but the weather was nice and breezy so it was pleasant to sit and people watch or take a walk on the beach.'
       },
       {
-        name: 'Joe Rogan',
+        name: 'Joe Krogan',
         userId: 6,
         beachId: 5,
         rating: 4,
