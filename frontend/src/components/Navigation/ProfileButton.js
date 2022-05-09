@@ -8,7 +8,6 @@ import { populateUserBeaches } from '../../store/userBeaches'
 function ProfileButton({ user }) {
 
   const userId = useSelector(state => state.session.user)
-  // console.log("userId-->", userId)
 
   const history = useHistory();
 

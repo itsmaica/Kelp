@@ -6,14 +6,12 @@ import { FaStar } from 'react-icons/fa';
 
 const CreateReviewForm = () => {
     const { beachId, userId } = useParams();
-    console.log("------ useParams",useParams())
     const history = useHistory();
     const dispatch = useDispatch()
 
 
     const user = useSelector(state => state.session.user)
     const beach = useSelector(state => state.beaches.beach)
-    console.log("logged-out user----", user)
 
     const [name, setName] = useState("Demo User")
     const [rating, setRating] = useState(null);
@@ -43,11 +41,8 @@ const CreateReviewForm = () => {
             answer
         }
 
-        console.log("---review",review)
-
         await dispatch(createNewReviewThunk(review, beachId))
         history.push(`/beaches/${beachId}`)
-
     }
 
     return (

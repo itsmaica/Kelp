@@ -20,7 +20,7 @@ const ShowOneBeach = () => {
     const dispatch = useDispatch();
     const beach = useSelector(state => state.beaches.beach);
     const sessionUser = useSelector(state => state.session.user)
-    // console.log("current user's id--->", currentUser)
+
 
     // if the current users id matches the review owner render the delete button. if not, don't show it and allow use.
 
@@ -49,30 +49,6 @@ const ShowOneBeach = () => {
         return (
             <>
 
-
-            {/* <div className="beach-list-h">
-                <div className="hp-kelp-logo-b">
-                    <a className="hp-kelp-link-b" href="/">kelp</a>
-                    <img className="kelp-logo-b" src={logo}/>
-                </div>
-            </div> */}
-{/*
-            <div className="beach-list-h">
-                <div className="hp-kelp-logo-b">
-                    <a className="hp-kelp-link-b" href="/">kelp</a>
-                    <img className="kelp-logo-b" src={logo}/>
-
-
-                </div>
-                {sessionUser ?
-                     <div id="demo-button-message-container">
-                     <p id="demo-message">Welcome, Demo!</p>
-                     <button id="logout-button" onClick={logout}>Log Out</button>
-                 </div> : <p></p>
-                }
-
-            </div> */}
-
             <div id="apples">
                  <div className="ob-img-container">
                     <img className="ob-img" src={require('../../images/beachBanner.jpeg')}/>
@@ -80,7 +56,6 @@ const ShowOneBeach = () => {
                     {beach  ?
                         <div className="ob-container">
                             <h1 className="ob-h1">{`${beach?.name}`}</h1>
-                                {/* <p className="ob-description">{beach?.description}</p> */}
                                 <div className="ob-ba">
                                     <div className="below-banner">
                                         {sessionUser?.id ?
