@@ -25,10 +25,10 @@ Kelp is a soft clone of [Yelp](https://www.yelp.com/) where users can share thei
 3. Create a .env file based on the .env.example included.
 
 4. Set up your database with information from your .env and then run the following to create your database, migrate, and seed: 
-5. 
+ 
    `npx dotenv sequelize db:create`
    `npx dotenv sequelize db:migrate` 
-   `npx dotenv sequelize db:seed:all``
+   `npx dotenv sequelize db:seed:all`
 
 Create database and migrate models
 
