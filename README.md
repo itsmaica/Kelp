@@ -1,6 +1,8 @@
 # Kelp
 
-Kelp is a soft clone of [Yelp](https://www.yelp.com/) where users can share their favorite beach destinations with other usersand write reviews.
+Kelp is a soft clone of [Yelp](https://www.yelp.com/) where users can share their favorite beach destinations with other usersand write reviews. 
+
+[Kelp](https://kelp-ms.herokuapp.com/)
 
 # Index
 
