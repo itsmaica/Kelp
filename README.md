@@ -7,3 +7,5 @@ Kelp is a soft clone of [Yelp](https://www.yelp.com/) where users can share thei
 |
 [MVP Feature List](https://github.com/itsmaica/Kelp/wiki/Feature-List)|
 [Database Schema](https://github.com/itsmaica/Kelp/wiki/DB-Schema) |
+
+#Technologies Used
