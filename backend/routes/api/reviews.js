@@ -23,7 +23,6 @@ router.get(
 router.get(
     "/:beachId",
     asyncHandler(async(req,res) => {
-        // console.log("REVIES FOR ONE BEACH GET ROUTE----->")
         const beachId = req.params.beachId
         const reviews = await Review.findAll({
             where: {
@@ -32,9 +31,7 @@ router.get(
                 }
             }
         })
-        // console.log(reviews)
         return res.json(reviews)
-        // console.log("hey maica")
     })
 )
 
@@ -43,10 +40,7 @@ router.delete(
     "/:id",
     asyncHandler(async(req,res) => {
         const id = req.params.id;
-        console.log("what is req.params", id)
-        console.log("-------greetings from delete REVIEW Route-----")
         const review = await Review.findByPk(id)
-        // console.log("Delete this review", deleteThisReview)
         await Review.destroy ({
             where: {id}
         })
@@ -54,20 +48,5 @@ router.delete(
     })
 )
 
-//testing it in beaches route for id
-// router.post(
-//     "/new",
-//     asyncHandler(async(req,res, next) => {
-//         const review = await Review.create({
-//             name: req.body.name,
-//             answer: req.body.name,
-//             userId: req.body.userId,
-//             beachId: req.body.beachId,
-//             rating: req.body.rating,
-//             answer: req.body.answer
-//         })
-//         return res.json(review);
-//     })
-// )
 
 module.exports = router;

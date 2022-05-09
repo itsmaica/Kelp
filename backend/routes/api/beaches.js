@@ -1,14 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const csrf = require('csurf');
-//validations? { check, validationResults } = expressValidator for backend
 const asyncHandler = require('express-async-handler')
 const { response } = require('express');
 const csrfProctection = csrf({ cookie: true })
 
-/// boiler above line 6
-
-//models
 const { Beach, Review } = require('../../db/models')
 
 //get beaches
@@ -16,8 +12,6 @@ router.get(
     "/",
     asyncHandler(async (req, res) => {
     const beaches = await Beach.findAll()
-    // console.log("Hello------from getAllBeachs")
-    // console.log("from the get route --> HELLO?!?", beaches)
     return res.json(beaches);
 }))
 
@@ -29,7 +23,6 @@ router.get(
         const oneBeach = await Beach.findByPk(beachId, {
             include: Review
         });
-        console.log("The route hit!!!!!!!!!")
         return res.json(oneBeach)
     })
 )
@@ -39,7 +32,6 @@ router.get(
 router.post(
     "/new",
     asyncHandler(async(req, res, next) => {
-        // console.log("beach from route fetch - does this route hit?")
         const beach = await Beach.create({
             name: req.body.name,
             userId: req.body.userId,
@@ -86,8 +78,6 @@ router.put(
     "/:id",
     asyncHandler(async(req,res) => {
         const id = req.params.id
-        // console.log("Hello from PUT ROUTE_____---___", req.params.id)
-
         const newName = req.body.name
         const newCategory = req.body.category
         const newDescription = req.body.description
@@ -136,16 +126,5 @@ router.put(
     })
 )
 
-// -> req.body = the following
-// {
-//     id: 7,
-//     name: 'TESTING THE PUT ROUTE',
-//     category: '',
-//     description: 'test',
-//     address: 'test',
-//     city: 'test',
-//     state: 'test',
-//     zip_code: '00000'
-//   }
 
 module.exports = router;

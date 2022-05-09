@@ -29,33 +29,18 @@ export const populateUserBeaches = (userId) => async (dispatch) => {
     const response = await csrfFetch(`/api/usersBeaches/${userId}/beaches`)
 
     const userBeaches = await response.json();
-        console.log("USER_BEACHES THUNK-------", userBeaches);
         dispatch(getUserBeaches(userBeaches))
         return response;
 }
 
 //delete a user beach
 export const removeUserBeach = (beachId, id) => async (dispatch) => {
-    console.log(`/api/usersBeaches/${id}/beaches/${beachId}`)
     const response = await csrfFetch(`/api/usersBeaches/${id}/beaches/${beachId}`, { method: 'DELETE'});
         const beach = await response.json();
         dispatch(destroyUserBeach(beach));
         return response;
 }
 
-//thunk to get one user beach
-// export const grabOneUserBeach = (beachId) => async (dispatch) => {
-//     const response = await csrfFetch(`/api/usersBeaches/${id}/beaches/${beachId}`)
-
-//     if (response.ok) {
-//         const oneUserBeach = await response.json();
-//         console.log("HELLO FROM GETONEUSER BEACH THUNK --->>", oneUserBeach)
-//         dispatch(getOneUserBeach(oneUserBeach));
-//         return response;
-//     } else {
-//         return undefined;
-//     }
-// }
 
 const initialState = {}
 
@@ -64,7 +49,6 @@ const userBeachesReducer = ( state = initialState, action) => {
     switch(action.type) {
         case GET_USER_BEACHES:
             newState = {...state}
-            // console.log("New STATE REDUCER 51--->", newState)
             action.payload.Beaches.forEach(beach => newState[beach.id] = beach)
             return newState;
         case DELETE_USER_BEACH:
@@ -76,7 +60,5 @@ const userBeachesReducer = ( state = initialState, action) => {
             return state;
     }
  }
-// [ beach {b},{b},{b},{b} ]
-// new state -> { setting key -> 6:{this a beach. the value of 6} }
 
 export default userBeachesReducer;

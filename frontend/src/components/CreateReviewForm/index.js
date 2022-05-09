@@ -6,7 +6,6 @@ import { FaStar } from 'react-icons/fa';
 
 const CreateReviewForm = () => {
     const { beachId, userId } = useParams();
-    console.log("------ useParams",useParams())
     const history = useHistory();
     const dispatch = useDispatch()
 
@@ -42,9 +41,7 @@ const CreateReviewForm = () => {
             answer
         }
 
-        console.log("---review",review)
-
-       await dispatch(createNewReviewThunk(review, beachId))
+        await dispatch(createNewReviewThunk(review, beachId))
         history.push(`/beaches/${beachId}`)
     }
 

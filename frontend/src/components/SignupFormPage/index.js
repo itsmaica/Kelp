@@ -12,7 +12,7 @@ function SignupFormPage() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
-  if (sessionUser) return <Redirect to="/" />;
+  if (sessionUser) return <Redirect to="/beaches" />;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -30,11 +30,29 @@ function SignupFormPage() {
   const demoUser = e => {
     e.preventDefault();
 
-    const credential = "Demo-lition"
+    const credential = "Demo-Kelp-Welcome"
     const password = "password";
 
     return dispatch(sessionActions.login({ credential, password }));
   };
+
+  // function Demo(){
+  //   const dispatch = useDispatch();
+
+  //   const loginDemo = e =>{
+  //     e.preventDefault();
+  //     const credential = "Demo-lition";
+  //     const password = "password";
+
+  //     return dispatch(sessionActions.login({credential, password}));
+  //   }
+
+  //   return (
+  //       <button className="demo-button btn" onClick={loginDemo}>
+  //         Demo User
+  //       </button>
+  //   )
+  // }
 
   return (
     <>
@@ -47,21 +65,28 @@ function SignupFormPage() {
         <div className="signup-section">
 
 
-
-
           <div id="sign-up-container">
             <h3 id="text">Sign up for Kelp</h3>
             <p id='connect'>Connect with awesome places</p>
-            <form
-              onSubmit={demoUser}
+            {/* <form
+              onSubmi
+      t={demoUser}
               className="demo-login-s"
-            >
+            > */}
+
+          <div
+            className="demo-login-s"
+          >
               <button
+                type="button"
+                onClick={demoUser}
                 id="demo-button"
               >
                 Continue as Demo User
               </button>
-            </form>
+
+          </div>
+            {/* </form> */}
 
           <form className="signup-form" onSubmit={handleSubmit}>
             <ul>

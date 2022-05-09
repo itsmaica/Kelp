@@ -27,7 +27,7 @@ const LoginFormPage = () => {
     const demoUser = e => {
       e.preventDefault();
 
-      const credential = "Demo-lition"
+      const credential = "Demo-Kelp-Welcome"
       const password = "password";
 
       return dispatch(sessionActions.login({ credential, password }));

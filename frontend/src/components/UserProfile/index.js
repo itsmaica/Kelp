@@ -32,12 +32,6 @@ const UserProfile = () => {
         history.push(`/beaches/${beachId}/edit-page`)
     }
 
-    // const selectBeach = (e, beachId) => {
-    //     dispatch(getOneBeach(beachId))
-    //     history.push(`/beaches/${beachId}`)
-    // }
-
-
 
     function deleteButton(e, beachId, id) {
         e.preventDefault();
@@ -58,6 +52,7 @@ const UserProfile = () => {
             <div className ="up-user-beaches">
                 <h2>Your Beaches</h2>
                 <button
+                    id="post-a-beach"
                     type="button"
                     onClick={(e) => postABeach(e)}
                 >

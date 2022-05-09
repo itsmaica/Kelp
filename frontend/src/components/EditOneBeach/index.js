@@ -17,12 +17,11 @@ const EditOneBeach = () => {
     const history = useHistory();
 
     const { beachId } = useParams();
-    console.log("This is id--------", beachId)
+
     const userId = useSelector(state => state.session.user.id)
     const dispatch = useDispatch();
     const beachObj = useSelector(state => state.userBeaches)
     const beach = beachObj[beachId]
-    console.log("This is beach---", beach)
 
     const oldAddress = beach.address
     const oldCategory = beach.category
@@ -34,7 +33,6 @@ const EditOneBeach = () => {
     const oldZipcode = beach.zip_code
 
     const [name, setName] = useState(oldName);
-    console.log("What is Name?? ----", name)
 
     const [category, setCategory] = useState(oldCategory);
     const [description, setDescription] = useState(oldDescription);

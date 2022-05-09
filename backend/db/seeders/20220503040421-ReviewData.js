@@ -48,35 +48,35 @@ module.exports = {
         answer: 'Beach was really crowded but the water was great for kids it was not very deep until you go pretty far into the water. My kids loved it.'
       },
       {
-        name: 'Gary Green',
+        name: 'Gary Gomez',
         userId: 5,
         beachId: 1,
         rating: 5,
         answer: 'Nice park with good views, a lava tube walk through and a black sand beach for swimming. A walking path leads to additional views. A good place to stop on the road to Hana.'
       },
       {
-        name: 'Gary Green',
+        name: 'Gary Gomez',
         userId: 5,
         beachId: 3,
         rating: 5,
         answer: 'We were particularly lucky to see Waimea Bay on a high surf day. The waves were especially good this day and quite a few surfers were taking advantage of it. It was fun to watch.'
       },
       {
-        name: 'Gary Green',
+        name: 'Gary Gomez',
         userId: 5,
         beachId: 5,
         rating: 4,
         answer: 'This may be the most beautiful park I have been to. You must not miss. The views walking around are breathtaking. You can enjoy a couple hours laying out at the beach if you wish to as well. There is an amazing cave down by the water inlet that is magical. Be prepared when you come here; at least during COVID, there was nowhere to buy water/food or go inside for a bit of shade. Still, absolutely amazing park. Enjoy!'
       },
       {
-        name: 'Joe Rogan',
+        name: 'Joe Krogan',
         userId: 6,
         beachId: 5,
         rating: 4,
         answer: 'Water was extremely cold in July, way too cold for a swim, but the weather was nice and breezy so it was pleasant to sit and people watch or take a walk on the beach.'
       },
       {
-        name: 'Joe Rogan',
+        name: 'Joe Krogan',
         userId: 6,
         beachId: 5,
         rating: 4,
@@ -97,35 +97,35 @@ module.exports = {
         answer: 'Lanikai is a beautiful place, but finding parking is an adventure in itself.'
       },
       {
-        name: 'Ruth Hollie',
+        name: 'Leaf Greene',
         userId: 8,
         beachId: 1,
         rating: 5,
         answer: 'Waimea Bay is SO BEAUTIFUL!!! Beautiful sand, stunning water, picnic tables, it is the most amazing spot to spend the day. I wish with my whole heart that I had spent more time in this amazing spot, or that I had come back a second day. Please do yourself the biggest favor and plan to spend a whole day here! Bring the towels or chairs and an umbrella along with a picnic lunch and have a fantastic day at Waimea Bay!!'
       },
       {
-        name: 'Ruth Hollie',
+        name: 'Leaf Greene',
         userId: 8,
         beachId: 2,
         rating: 4,
         answer: 'Beautiful beach, clean, seemed quiet but that could\'ve just been the time of day. Will absolutely return!'
       },
       {
-        name: 'Ruth Hollie',
+        name: 'Leaf Greene',
         userId: 8,
         beachId: 3,
         rating: 5,
         answer: 'Very beautiful bay with a nice rock cliff jump. Not that high of a jump into the crystal clear water. The walk back up to the jump isn\'t hard either and doesn\'t require water shoes'
       },
       {
-        name: 'Ruth Hollie',
+        name: 'Leaf Greene',
         userId: 8,
         beachId: 4,
         rating: 5,
         answer: 'We rented a cabana and two chairs for $75 for the day. The sand was incredibly soft and white. Lots of little seashells at the waters edge. Shops were across the street and hotels right on the beach. The pier has some more night life than day life. Nice beach to visit. Water was a little cold in March. Wasn\'t extremely crowded during Spring break.'
       },
       {
-        name: 'Ruth Hollie',
+        name: 'Leaf Greene',
         userId: 8,
         beachId: 6,
         rating: 4,

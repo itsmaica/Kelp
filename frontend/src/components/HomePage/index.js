@@ -14,25 +14,23 @@ const HomePage = () => {
         <div className="hp-home-page-container">
             <nav className="hp-navigation-bar">
                 <div className="hp-nav-left-beaches-link">
-                    <a  className="nav-beaches" href="/beaches"/>
+                    {/* <a  className="nav-beaches" href="/beaches"/> */}
                 </div>
                 <div className="hp-nav-right"></div>
 
             </nav>
 
             <div className="hp-background-image-behind-search-bar">
-                <img className="hp-banner-image" src={require('../../images/banner3.jpeg')} />
+                <img className="hp-banner-image" src={banner3} />
             </div>
 
             <div className="hp-kelp-logo">
-                <a className="hp-kelp-link" href="/">kelp</a>
+                <a className="hp-kelp-link-homepage" href="/">kelp</a>
                 <img className="kelp-logo" src={logo}/>
             </div>
 
             <div className="hp-search-bar">Find cool places near you</div>
 
-
-            <h2 className="hp-red-heading">Your Next Beach Destination Awaits</h2>
 
             <div className="hp-review-cards">
                 <a className="hp-beach-card" href="#"></a>

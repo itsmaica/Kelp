@@ -65,7 +65,6 @@ export const getOneBeach = (beachId) => async dispatch => {
     const response = await csrfFetch(`/api/beaches/${beachId}`)
     if (response.ok) {
         const oneBeach = await response.json();
-        // console.log("This is the beach from the fetch in src", beach)
         dispatch(loadOneBeach(oneBeach));
         return response;
     } else {
@@ -92,7 +91,6 @@ export const createOneBeach = (payload) => async dispatch => {
 
 // creating a review thunk
 export const createNewReviewThunk = (review, beachId) => async (dispatch) => {
-    console.log("Create review thunk", beachId)
     const response = await csrfFetch(`/api/beaches/${beachId}/reviews/new`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -100,7 +98,6 @@ export const createNewReviewThunk = (review, beachId) => async (dispatch) => {
     })
 
     if (response.ok) {
-        console.log("response hello------", response.ok)
         const review = await response.json();
         dispatch(makeNewReview(review));
         // return response;
@@ -110,11 +107,9 @@ export const createNewReviewThunk = (review, beachId) => async (dispatch) => {
 }
 
 export const removeReviewInBeachesStore = (reviewId) => async (dispatch) => {
-    console.log("HELLO FROM DELETE REVIEW THUNK------")
     const response = await csrfFetch(`/api/reviews/${reviewId}`, {
         method: 'DELETE'
     })
-    console.log("------ response",response);
         const review = await response.json();
         dispatch(destroyReview(review));
         return response;
@@ -122,7 +117,6 @@ export const removeReviewInBeachesStore = (reviewId) => async (dispatch) => {
 
 //edit a beach
 export const updateBeachThunk = (payload, oldId) => async (dispatch) => {
-    console.log("Hello from PUT THUNK---", oldId)
     const response = await csrfFetch(`/api/beaches/${oldId}`, {
         method: 'PUT',
         Headers: { "Content-type": "application/json" },
@@ -142,7 +136,6 @@ const beachReducer = ( state = initialState, action ) => {
     let newState;
     switch(action.type) {
         case LOAD_BEACHES:
-            //keep previous beaches if there
             newState = {...state}
             action.payload.forEach(beach => {
                 newState[beach.id] = beach
@@ -151,7 +144,6 @@ const beachReducer = ( state = initialState, action ) => {
         case LOAD_ONE_BEACH:
             newState = {...state}
             newState.beach = action.payload
-            // action.payload
             return newState;
         case CREATE_BEACH:
             newState = {...state.beaches, [action.payload.id]: action.payload}
@@ -161,7 +153,6 @@ const beachReducer = ( state = initialState, action ) => {
             delete newState[action.beachId];
             return newState
          case CREATE_REVIEW:
-             console.log("_______STATE.BEACH_____", state)
             newState = {...state, [action.payload.id]: action.payload}
             return newState;
         case DESTROY_REVIEW:
