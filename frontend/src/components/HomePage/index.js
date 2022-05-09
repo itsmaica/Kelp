@@ -14,7 +14,7 @@ const HomePage = () => {
         <div className="hp-home-page-container">
             <nav className="hp-navigation-bar">
                 <div className="hp-nav-left-beaches-link">
-                    <a  className="nav-beaches" href="/beaches"/>
+                    {/* <a  className="nav-beaches" href="/beaches"/> */}
                 </div>
                 <div className="hp-nav-right"></div>
 
@@ -31,8 +31,6 @@ const HomePage = () => {
 
             <div className="hp-search-bar">Find cool places near you</div>
 
-
-            <h2 className="hp-red-heading">Your Next Beach Destination Awaits</h2>
 
             <div className="hp-review-cards">
                 <a className="hp-beach-card" href="#"></a>

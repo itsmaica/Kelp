@@ -7,7 +7,7 @@ import { populateUserBeaches } from '../../store/userBeaches'
 
 function ProfileButton({ user }) {
 
-  const userId = useSelector(state => state.session.user.id)
+  const userId = useSelector(state => state.session.user)
   // console.log("userId-->", userId)
 
   const history = useHistory();
@@ -40,7 +40,7 @@ function ProfileButton({ user }) {
 
   const toProfile = (e, userId) => {
     e.preventDefault();
-    dispatch(populateUserBeaches(userId))
+    dispatch(populateUserBeaches(userId?.id))
     history.push("/id/beaches")
   }
 
