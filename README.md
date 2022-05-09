@@ -32,7 +32,7 @@ Kelp is a soft clone of [Yelp](https://www.yelp.com/) where users can share thei
 
 5. Start the app for both backend and frontend using:
 
-  * `npm start`
+   * `npm start`
 
 6. Now you can use the Demo user or create an account
 
